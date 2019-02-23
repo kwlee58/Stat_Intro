@@ -1,0 +1,2436 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<script language=javascript>
+
+	var commonResultMessage = "null";
+	if(commonResultMessage=="" || commonResultMessage=="null") {
+		commonResultMessage = "null";
+	}
+	var localeKey = "ko";
+</script>
+
+<html>
+	<head>
+		<title>Learner_File_Save</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+<body>
+<form name="learnerForm" method="post" action="/Learner.do">
+<table border="1" cellspacing="0" cellpadding="0" width="900">
+
+	<tr>
+		<td colspan="9" class="search-title">
+			과목명 :
+			생활속의통계학-01(005036)
+		</td>
+	</tr>
+	<tr>
+		<td width="40">No</td>
+		<td width="60">과정</td>
+		<td width="90">학과</td>
+		<td width="80">학(직)번</td>
+		<td width="100">이름</td>
+		<td width="80">학년</td>
+		<td width="200">E-Mail</td>
+		<td width="70">학적상태</td>
+		<td width="140">핸드폰번호</td>
+	</tr>
+	
+		
+			<tr>
+				<td>1</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195103</td>
+				<td>강병규
+					
+				</td>
+				<td>1</td>
+				<td>kbk7525@naver.com</td>
+				<td></td>
+				<td>010-7525-9580</td>
+			</tr>
+		
+			<tr>
+				<td>2</td>
+				<td></td>
+				<td>응용광물리학과</td>
+				<td>20163302</td>
+				<td>강석우
+					
+				</td>
+				<td>3</td>
+				<td>seokwookang@naver.com</td>
+				<td></td>
+				<td>010-4555-8192</td>
+			</tr>
+		
+			<tr>
+				<td>3</td>
+				<td></td>
+				<td>바이오메디컬학과</td>
+				<td>20193602</td>
+				<td>강은지
+					
+				</td>
+				<td>1</td>
+				<td>345ej@naver.com</td>
+				<td></td>
+				<td>010-5608-9461</td>
+			</tr>
+		
+			<tr>
+				<td>4</td>
+				<td></td>
+				<td>인문학부</td>
+				<td>20181002</td>
+				<td>강재혁
+					
+				</td>
+				<td>1</td>
+				<td>aa108903@naver.com</td>
+				<td></td>
+				<td>010-9616-7816</td>
+			</tr>
+		
+			<tr>
+				<td>5</td>
+				<td></td>
+				<td>전자공학과</td>
+				<td>20155203</td>
+				<td>강준영
+					
+				</td>
+				<td>2</td>
+				<td>rkdwnsdud82@naver.com</td>
+				<td></td>
+				<td>010-8646-8225</td>
+			</tr>
+		
+			<tr>
+				<td>6</td>
+				<td></td>
+				<td>의예과</td>
+				<td>20186103</td>
+				<td>고동영
+					
+				</td>
+				<td>1</td>
+				<td>mkonji936@naver.com</td>
+				<td></td>
+				<td>010-6818-1537</td>
+			</tr>
+		
+			<tr>
+				<td>7</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195104</td>
+				<td>고영찬
+					
+				</td>
+				<td>1</td>
+				<td>gych5647@naver.com</td>
+				<td></td>
+				<td>010-9003-5647</td>
+			</tr>
+		
+			<tr>
+				<td>8</td>
+				<td></td>
+				<td>미디어스쿨</td>
+				<td>20182502</td>
+				<td>고하경
+					
+				</td>
+				<td>1</td>
+				<td>ko9832@naver.com</td>
+				<td></td>
+				<td>010-9228-8460</td>
+			</tr>
+		
+			<tr>
+				<td>9</td>
+				<td></td>
+				<td>나노융합스쿨</td>
+				<td>20177095</td>
+				<td>곽상운
+					
+				</td>
+				<td>3</td>
+				<td>hanm9313@gmail.com</td>
+				<td></td>
+				<td>010-4276-2714</td>
+			</tr>
+		
+			<tr>
+				<td>10</td>
+				<td></td>
+				<td>융합신소재공학과</td>
+				<td>20155404</td>
+				<td>구동희
+					
+				</td>
+				<td>4</td>
+				<td>gdh4379@naver.com</td>
+				<td></td>
+				<td>010-2026-9591</td>
+			</tr>
+		
+			<tr>
+				<td>11</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20145103</td>
+				<td>권성준
+					
+				</td>
+				<td>3</td>
+				<td>kofdx7@gmail.com</td>
+				<td></td>
+				<td>010-2586-9767</td>
+			</tr>
+		
+			<tr>
+				<td>12</td>
+				<td></td>
+				<td>나노융합스쿨</td>
+				<td>20185403</td>
+				<td>권영현
+					
+				</td>
+				<td>1</td>
+				<td>msy4259@naver.com</td>
+				<td></td>
+				<td>010-9833-4259</td>
+			</tr>
+		
+			<tr>
+				<td>13</td>
+				<td></td>
+				<td>의예과</td>
+				<td>20186106</td>
+				<td>권오규
+					
+				</td>
+				<td>1</td>
+				<td>ogu9907@naver.com</td>
+				<td></td>
+				<td>010-3082-3745</td>
+			</tr>
+		
+			<tr>
+				<td>14</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193204</td>
+				<td>권채영
+					
+				</td>
+				<td>1</td>
+				<td>kwonchaeyoung@naver.com</td>
+				<td></td>
+				<td>010-3848-7581</td>
+			</tr>
+		
+			<tr>
+				<td>15</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195112</td>
+				<td>권혁빈
+					
+				</td>
+				<td>1</td>
+				<td>gurqls0215@naver.com</td>
+				<td></td>
+				<td>010-9386-9560</td>
+			</tr>
+		
+			<tr>
+				<td>16</td>
+				<td></td>
+				<td>미래융합스쿨</td>
+				<td>20196604</td>
+				<td>김가빈
+					
+				</td>
+				<td>1</td>
+				<td>himmu0110@naver.com</td>
+				<td></td>
+				<td>010-7938-4592</td>
+			</tr>
+		
+			<tr>
+				<td>17</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20145106</td>
+				<td>김경민
+					
+				</td>
+				<td>3</td>
+				<td>kkm5022@naver.com</td>
+				<td></td>
+				<td>010-5022-9905</td>
+			</tr>
+		
+			<tr>
+				<td>18</td>
+				<td></td>
+				<td>미디어스쿨</td>
+				<td>20192511</td>
+				<td>김기범
+					
+				</td>
+				<td>1</td>
+				<td>keebum09@naver.com</td>
+				<td></td>
+				<td>010-4256-5632</td>
+			</tr>
+		
+			<tr>
+				<td>19</td>
+				<td></td>
+				<td>금융재무학과</td>
+				<td>20182816</td>
+				<td>김덕훈
+					
+				</td>
+				<td>1</td>
+				<td>rlaejrgns69@naver.com</td>
+				<td></td>
+				<td>010-4760-3770</td>
+			</tr>
+		
+			<tr>
+				<td>20</td>
+				<td></td>
+				<td>경영대학</td>
+				<td>20192820</td>
+				<td>김도열
+					
+				</td>
+				<td>1</td>
+				<td>kdyj3585@naver.com</td>
+				<td></td>
+				<td>010-2765-6211</td>
+			</tr>
+		
+			<tr>
+				<td>21</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195120</td>
+				<td>김도현
+					
+				</td>
+				<td>1</td>
+				<td>rlaehgusqp@naver.com</td>
+				<td></td>
+				<td>010-2001-6448</td>
+			</tr>
+		
+			<tr>
+				<td>22</td>
+				<td></td>
+				<td>나노융합스쿨</td>
+				<td>20193306</td>
+				<td>김도현
+					
+				</td>
+				<td>1</td>
+				<td>kimdohyeon@korea.com</td>
+				<td></td>
+				<td>010-5436-0831</td>
+			</tr>
+		
+			<tr>
+				<td>23</td>
+				<td></td>
+				<td>미래융합스쿨</td>
+				<td>20196608</td>
+				<td>김도훈
+					
+				</td>
+				<td>1</td>
+				<td>ajtwls410@naver.com</td>
+				<td></td>
+				<td>010-9967-3297</td>
+			</tr>
+		
+			<tr>
+				<td>24</td>
+				<td></td>
+				<td>바이오메디컬학과</td>
+				<td>20193605</td>
+				<td>김동연
+					
+				</td>
+				<td>1</td>
+				<td>roy8596@naver.com</td>
+				<td></td>
+				<td>010-8838-0588</td>
+			</tr>
+		
+			<tr>
+				<td>25</td>
+				<td></td>
+				<td>간호학</td>
+				<td>20196205</td>
+				<td>김민재
+					
+				</td>
+				<td>1</td>
+				<td>terry990711@naver.com</td>
+				<td></td>
+				<td>010-8933-7781</td>
+			</tr>
+		
+			<tr>
+				<td>26</td>
+				<td></td>
+				<td>광고홍보학과</td>
+				<td>20162610</td>
+				<td>김민지
+					
+				</td>
+				<td>3</td>
+				<td>sofhd2000@naver.com</td>
+				<td></td>
+				<td>010-8495-3221</td>
+			</tr>
+		
+			<tr>
+				<td>27</td>
+				<td></td>
+				<td>청각학전공</td>
+				<td>20183908</td>
+				<td>김민지
+					
+				</td>
+				<td>1</td>
+				<td>minjee0627@naver.com</td>
+				<td></td>
+				<td>010-3329-6568</td>
+			</tr>
+		
+			<tr>
+				<td>28</td>
+				<td></td>
+				<td>환경생명공학과</td>
+				<td>20193703</td>
+				<td>김석준
+					
+				</td>
+				<td>1</td>
+				<td>sukjunkim2000@naver.com</td>
+				<td></td>
+				<td>010-5052-3248</td>
+			</tr>
+		
+			<tr>
+				<td>29</td>
+				<td></td>
+				<td>체육학과</td>
+				<td>20194110</td>
+				<td>김성준
+					
+				</td>
+				<td>1</td>
+				<td>tjdwns2086@naver.com</td>
+				<td></td>
+				<td>010-8882-2086</td>
+			</tr>
+		
+			<tr>
+				<td>30</td>
+				<td></td>
+				<td>미디어스쿨</td>
+				<td>20192518</td>
+				<td>김소영
+					
+				</td>
+				<td>1</td>
+				<td>ksyoung357@naver.com</td>
+				<td></td>
+				<td>010-9046-4355</td>
+			</tr>
+		
+			<tr>
+				<td>31</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195129</td>
+				<td>김소희
+					
+				</td>
+				<td>1</td>
+				<td>rlathgml1567@naver.com</td>
+				<td></td>
+				<td>010-2064-4695</td>
+			</tr>
+		
+			<tr>
+				<td>32</td>
+				<td></td>
+				<td>경영대학</td>
+				<td>20192833</td>
+				<td>김수환
+					
+				</td>
+				<td>1</td>
+				<td>lawoo704@naver.com</td>
+				<td></td>
+				<td>010-9056-9655</td>
+			</tr>
+		
+			<tr>
+				<td>33</td>
+				<td></td>
+				<td>정치행정학과</td>
+				<td>20192405</td>
+				<td>김승겸
+					
+				</td>
+				<td>1</td>
+				<td>emt183@naver.com</td>
+				<td></td>
+				<td>010-2268-8611</td>
+			</tr>
+		
+			<tr>
+				<td>34</td>
+				<td></td>
+				<td>경영대학</td>
+				<td>20192835</td>
+				<td>김승하
+					
+				</td>
+				<td>1</td>
+				<td>kimseungha510@naver.com</td>
+				<td></td>
+				<td>010-8960-4406</td>
+			</tr>
+		
+			<tr>
+				<td>35</td>
+				<td></td>
+				<td>철학전공</td>
+				<td>20161013</td>
+				<td>김영운
+					
+				</td>
+				<td>1</td>
+				<td>coke97@hanmail.net</td>
+				<td></td>
+				<td>010-8590-8970</td>
+			</tr>
+		
+			<tr>
+				<td>36</td>
+				<td></td>
+				<td>화학과</td>
+				<td>20173404</td>
+				<td>김예지
+					
+				</td>
+				<td>2</td>
+				<td>dkdl8330@naver.com</td>
+				<td></td>
+				<td>010-9652-2714</td>
+			</tr>
+		
+			<tr>
+				<td>37</td>
+				<td></td>
+				<td>철학전공</td>
+				<td>20181022</td>
+				<td>김예찬
+					
+				</td>
+				<td>1</td>
+				<td>kyc202024@naver.com</td>
+				<td></td>
+				<td>010-4157-7449</td>
+			</tr>
+		
+			<tr>
+				<td>38</td>
+				<td></td>
+				<td>응용광물리학과</td>
+				<td>20163311</td>
+				<td>김용준
+					
+				</td>
+				<td>1</td>
+				<td>beth1997@nate.com</td>
+				<td></td>
+				<td>010-4917-8626</td>
+			</tr>
+		
+			<tr>
+				<td>39</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195133</td>
+				<td>김유진
+					
+				</td>
+				<td>1</td>
+				<td>black6973@naver.com</td>
+				<td></td>
+				<td>010-6631-9171</td>
+			</tr>
+		
+			<tr>
+				<td>40</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193212</td>
+				<td>김인영
+					
+				</td>
+				<td>1</td>
+				<td>kiy1407@naver.com</td>
+				<td></td>
+				<td>010-5094-3920</td>
+			</tr>
+		
+			<tr>
+				<td>41</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195135</td>
+				<td>김재원
+					
+				</td>
+				<td>1</td>
+				<td>andy0418@naver.com</td>
+				<td></td>
+				<td>010-6350-4095</td>
+			</tr>
+		
+			<tr>
+				<td>42</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20153408</td>
+				<td>김정현
+					
+				</td>
+				<td>2</td>
+				<td>junghyun1278@naver.com</td>
+				<td></td>
+				<td>010-8435-5489</td>
+			</tr>
+		
+			<tr>
+				<td>43</td>
+				<td></td>
+				<td>간호학</td>
+				<td>20196219</td>
+				<td>김지민
+					
+				</td>
+				<td>1</td>
+				<td>ivy9911@naver.com</td>
+				<td></td>
+				<td>010-4112-8808</td>
+			</tr>
+		
+			<tr>
+				<td>44</td>
+				<td></td>
+				<td>나노융합스쿨</td>
+				<td>20193317</td>
+				<td>김진혁
+					
+				</td>
+				<td>1</td>
+				<td>rlawlsgurjh@naver.com</td>
+				<td></td>
+				<td>010-8851-9266</td>
+			</tr>
+		
+			<tr>
+				<td>45</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195144</td>
+				<td>김창현
+					
+				</td>
+				<td>1</td>
+				<td>kch633@naver.com</td>
+				<td></td>
+				<td>010-9833-6579</td>
+			</tr>
+		
+			<tr>
+				<td>46</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193216</td>
+				<td>김홍기
+					
+				</td>
+				<td>1</td>
+				<td>hong_413@naver.com</td>
+				<td></td>
+				<td>010-3443-1819</td>
+			</tr>
+		
+			<tr>
+				<td>47</td>
+				<td></td>
+				<td>영어영문학과</td>
+				<td>20121208</td>
+				<td>나형준
+					
+				</td>
+				<td>3</td>
+				<td>1358nhj@naver.com</td>
+				<td></td>
+				<td>010-5309-7850</td>
+			</tr>
+		
+			<tr>
+				<td>48</td>
+				<td></td>
+				<td>사회복지학</td>
+				<td>20162323</td>
+				<td>노소영
+					
+				</td>
+				<td>3</td>
+				<td>thdud4353@naver.com</td>
+				<td></td>
+				<td>010-2560-4353</td>
+			</tr>
+		
+			<tr>
+				<td>49</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195156</td>
+				<td>노우엽
+					
+				</td>
+				<td>1</td>
+				<td>wolf307@naver.com</td>
+				<td></td>
+				<td>010-8600-0518</td>
+			</tr>
+		
+			<tr>
+				<td>50</td>
+				<td></td>
+				<td>간호학</td>
+				<td>20196226</td>
+				<td>문강원
+					
+				</td>
+				<td>1</td>
+				<td>sallydanny3@naver.com</td>
+				<td></td>
+				<td>010-9147-4739</td>
+			</tr>
+		
+			<tr>
+				<td>51</td>
+				<td></td>
+				<td>환경생명공학과</td>
+				<td>20193711</td>
+				<td>민성희
+					
+				</td>
+				<td>1</td>
+				<td>heeya1367@naver.com</td>
+				<td></td>
+				<td>010-7512-7223</td>
+			</tr>
+		
+			<tr>
+				<td>52</td>
+				<td></td>
+				<td>식품영양학과</td>
+				<td>20144119</td>
+				<td>박경두
+					
+				</td>
+				<td>3</td>
+				<td>slslswk123@naver.com</td>
+				<td></td>
+				<td>010-7313-2347</td>
+			</tr>
+		
+			<tr>
+				<td>53</td>
+				<td></td>
+				<td>체육학과</td>
+				<td>20194115</td>
+				<td>박경민
+					
+				</td>
+				<td>1</td>
+				<td>pkm5095@naver.com</td>
+				<td></td>
+				<td>010-9447-5095</td>
+			</tr>
+		
+			<tr>
+				<td>54</td>
+				<td></td>
+				<td>전자공학과</td>
+				<td>20155221</td>
+				<td>박민정
+					
+				</td>
+				<td>4</td>
+				<td>korando7035@naver.com</td>
+				<td></td>
+				<td>010-5490-0633</td>
+			</tr>
+		
+			<tr>
+				<td>55</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20153414</td>
+				<td>박새길
+					
+				</td>
+				<td>2</td>
+				<td>torlf1118@hanmail.net</td>
+				<td></td>
+				<td>010-8752-6240</td>
+			</tr>
+		
+			<tr>
+				<td>56</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195167</td>
+				<td>박서영
+					
+				</td>
+				<td>1</td>
+				<td>psy337337@naver.com</td>
+				<td></td>
+				<td>010-2362-5174</td>
+			</tr>
+		
+			<tr>
+				<td>57</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195168</td>
+				<td>박서정
+					
+				</td>
+				<td>1</td>
+				<td>diditjwjd@naver.com</td>
+				<td></td>
+				<td>010-6725-2073</td>
+			</tr>
+		
+			<tr>
+				<td>58</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20145124</td>
+				<td>박성진
+					
+				</td>
+				<td>3</td>
+				<td>bdman95@naver.com</td>
+				<td></td>
+				<td>010-3579-4624</td>
+			</tr>
+		
+			<tr>
+				<td>59</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193219</td>
+				<td>박시우
+					
+				</td>
+				<td>1</td>
+				<td>parksiwoo1214@naver.com</td>
+				<td></td>
+				<td>010-8666-7993</td>
+			</tr>
+		
+			<tr>
+				<td>60</td>
+				<td></td>
+				<td>체육학과</td>
+				<td>20194118</td>
+				<td>박재현
+					
+				</td>
+				<td>1</td>
+				<td>we963@naver.com</td>
+				<td></td>
+				<td>010-4515-2402</td>
+			</tr>
+		
+			<tr>
+				<td>61</td>
+				<td></td>
+				<td>생명과학과</td>
+				<td>20163513</td>
+				<td>박준영
+					
+				</td>
+				<td>1</td>
+				<td>qkrwns2323@naver.com</td>
+				<td></td>
+				<td>010-9133-5829</td>
+			</tr>
+		
+			<tr>
+				<td>62</td>
+				<td></td>
+				<td>광고홍보학과</td>
+				<td>20192615</td>
+				<td>박지민
+					
+				</td>
+				<td>1</td>
+				<td>pkr0816@naver.com</td>
+				<td></td>
+				<td>010-6298-3248</td>
+			</tr>
+		
+			<tr>
+				<td>63</td>
+				<td></td>
+				<td>경영대학</td>
+				<td>20192885</td>
+				<td>박지현
+					
+				</td>
+				<td>1</td>
+				<td>jh00601@naver.com</td>
+				<td></td>
+				<td>010-2581-2788</td>
+			</tr>
+		
+			<tr>
+				<td>64</td>
+				<td></td>
+				<td>바이오메디컬학과</td>
+				<td>20193616</td>
+				<td>박채영
+					
+				</td>
+				<td>1</td>
+				<td>pchaeyoung@naver.com</td>
+				<td></td>
+				<td>010-8381-0215</td>
+			</tr>
+		
+			<tr>
+				<td>65</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195174</td>
+				<td>박태양
+					
+				</td>
+				<td>1</td>
+				<td>dbsrhkdid5@naver.com</td>
+				<td></td>
+				<td>010-9080-3740</td>
+			</tr>
+		
+			<tr>
+				<td>66</td>
+				<td></td>
+				<td>생명과학과</td>
+				<td>20173551</td>
+				<td>박하늘
+					
+				</td>
+				<td>2</td>
+				<td>msseptemba@naver.com</td>
+				<td></td>
+				<td>010-3315-6932</td>
+			</tr>
+		
+			<tr>
+				<td>67</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195175</td>
+				<td>박현빈
+					
+				</td>
+				<td>1</td>
+				<td>hin2d@naver.com</td>
+				<td></td>
+				<td>010-3922-0270</td>
+			</tr>
+		
+			<tr>
+				<td>68</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20153418</td>
+				<td>박효준
+					
+				</td>
+				<td>2</td>
+				<td>qkrgywns99@naver.com</td>
+				<td></td>
+				<td>010-4139-0974</td>
+			</tr>
+		
+			<tr>
+				<td>69</td>
+				<td></td>
+				<td>생명과학과</td>
+				<td>20163518</td>
+				<td>배준용
+					
+				</td>
+				<td>1</td>
+				<td>mn1206@naver.com</td>
+				<td></td>
+				<td>010-9193-7883</td>
+			</tr>
+		
+			<tr>
+				<td>70</td>
+				<td></td>
+				<td>일본학과</td>
+				<td>20171615</td>
+				<td>서영우
+					
+				</td>
+				<td>2</td>
+				<td>atode123@naver.com</td>
+				<td></td>
+				<td>010-9857-4708</td>
+			</tr>
+		
+			<tr>
+				<td>71</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195178</td>
+				<td>서영재
+					
+				</td>
+				<td>1</td>
+				<td>ssyyjj1012@naver.com</td>
+				<td></td>
+				<td>010-8774-8825</td>
+			</tr>
+		
+			<tr>
+				<td>72</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195180</td>
+				<td>서찬영
+					
+				</td>
+				<td>1</td>
+				<td>513ab@naver.com</td>
+				<td></td>
+				<td>010-4633-7914</td>
+			</tr>
+		
+			<tr>
+				<td>73</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195181</td>
+				<td>서태현
+					
+				</td>
+				<td>1</td>
+				<td>yadoran0806@naver.com</td>
+				<td></td>
+				<td>010-2340-9069</td>
+			</tr>
+		
+			<tr>
+				<td>74</td>
+				<td></td>
+				<td>일본학과</td>
+				<td>20181621</td>
+				<td>선종혜
+					
+				</td>
+				<td>1</td>
+				<td>sunjonghye@gmail.com</td>
+				<td></td>
+				<td>010-5006-0907</td>
+			</tr>
+		
+			<tr>
+				<td>75</td>
+				<td></td>
+				<td>사회복지학부</td>
+				<td>20192328</td>
+				<td>성서연
+					
+				</td>
+				<td>1</td>
+				<td>telcar17@naver.com</td>
+				<td></td>
+				<td>010-9722-7813</td>
+			</tr>
+		
+			<tr>
+				<td>76</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193225</td>
+				<td>손미르
+					
+				</td>
+				<td>1</td>
+				<td>mirue0126@nate.com</td>
+				<td></td>
+				<td>010-6216-7935</td>
+			</tr>
+		
+			<tr>
+				<td>77</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20133316</td>
+				<td>송명석
+					
+				</td>
+				<td>3</td>
+				<td>audtjr714@naver.com</td>
+				<td></td>
+				<td>010-2747-3283</td>
+			</tr>
+		
+			<tr>
+				<td>78</td>
+				<td></td>
+				<td>법학과</td>
+				<td>20142748</td>
+				<td>송은지
+					
+				</td>
+				<td>3</td>
+				<td>sssong1414@naver.com</td>
+				<td></td>
+				<td>010-7671-9872</td>
+			</tr>
+		
+			<tr>
+				<td>79</td>
+				<td></td>
+				<td>생명과학과</td>
+				<td>20163524</td>
+				<td>신기철
+					
+				</td>
+				<td>2</td>
+				<td>kc1597610@naver.com</td>
+				<td></td>
+				<td>010-4054-1921</td>
+			</tr>
+		
+			<tr>
+				<td>80</td>
+				<td></td>
+				<td>전자공학과</td>
+				<td>20135225</td>
+				<td>신승철
+					
+				</td>
+				<td>3</td>
+				<td>sscnet@naver.com</td>
+				<td></td>
+				<td>010-2015-9294</td>
+			</tr>
+		
+			<tr>
+				<td>81</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20185253</td>
+				<td>신승혁
+					
+				</td>
+				<td>1</td>
+				<td>tmdgur0147@naver.com</td>
+				<td></td>
+				<td>010-4193-5974</td>
+			</tr>
+		
+			<tr>
+				<td>82</td>
+				<td></td>
+				<td>경제학과</td>
+				<td>20173022</td>
+				<td>심지은
+					
+				</td>
+				<td>2</td>
+				<td>98tlawldms@naver.com</td>
+				<td></td>
+				<td>010-6358-7202</td>
+			</tr>
+		
+			<tr>
+				<td>83</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195194</td>
+				<td>안재범
+					
+				</td>
+				<td>1</td>
+				<td>ahn124007@naver.com</td>
+				<td></td>
+				<td>010-3288-9629</td>
+			</tr>
+		
+			<tr>
+				<td>84</td>
+				<td></td>
+				<td>경영학과</td>
+				<td>20172863</td>
+				<td>양선우
+					
+				</td>
+				<td>2</td>
+				<td>seonwoo730@naver.com</td>
+				<td></td>
+				<td>010-5621-1863</td>
+			</tr>
+		
+			<tr>
+				<td>85</td>
+				<td></td>
+				<td>경영대학</td>
+				<td>20192911</td>
+				<td>양아영
+					
+				</td>
+				<td>1</td>
+				<td>dkdud7033@naver.com</td>
+				<td></td>
+				<td>010-7189-7034</td>
+			</tr>
+		
+			<tr>
+				<td>86</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195196</td>
+				<td>양혜원
+					
+				</td>
+				<td>1</td>
+				<td>wontwolove@naver.com</td>
+				<td></td>
+				<td>010-7255-7171</td>
+			</tr>
+		
+			<tr>
+				<td>87</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195197</td>
+				<td>엄태진
+					
+				</td>
+				<td>1</td>
+				<td>djaxowls142@naver.com</td>
+				<td></td>
+				<td>010-5156-8939</td>
+			</tr>
+		
+			<tr>
+				<td>88</td>
+				<td></td>
+				<td>생명과학과</td>
+				<td>20173526</td>
+				<td>왕수현
+					
+				</td>
+				<td>2</td>
+				<td>xnxkrdl@naver.com</td>
+				<td></td>
+				<td>010-9999-9305</td>
+			</tr>
+		
+			<tr>
+				<td>89</td>
+				<td></td>
+				<td>나노융합스쿨</td>
+				<td>20185416</td>
+				<td>용환준
+					
+				</td>
+				<td>1</td>
+				<td>rune7116@naver.com</td>
+				<td></td>
+				<td>010-9396-3015</td>
+			</tr>
+		
+			<tr>
+				<td>90</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193230</td>
+				<td>우호식
+					
+				</td>
+				<td>1</td>
+				<td>hswoo001121@naver.com</td>
+				<td></td>
+				<td>010-8748-9375</td>
+			</tr>
+		
+			<tr>
+				<td>91</td>
+				<td></td>
+				<td>법학과</td>
+				<td>20162732</td>
+				<td>원지희
+					
+				</td>
+				<td>2</td>
+				<td>buble9977@naver.com</td>
+				<td></td>
+				<td>010-8279-2280</td>
+			</tr>
+		
+			<tr>
+				<td>92</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195204</td>
+				<td>유예린
+					
+				</td>
+				<td>1</td>
+				<td>ylzzzz@naver.com</td>
+				<td></td>
+				<td>010-7163-9281</td>
+			</tr>
+		
+			<tr>
+				<td>93</td>
+				<td></td>
+				<td>경영학과</td>
+				<td>20132890</td>
+				<td>유윤호
+					
+				</td>
+				<td>3</td>
+				<td>dbdbsgh94@daum.net</td>
+				<td></td>
+				<td>010-3191-7825</td>
+			</tr>
+		
+			<tr>
+				<td>94</td>
+				<td></td>
+				<td>미래융합스쿨</td>
+				<td>20196625</td>
+				<td>윤나리
+					
+				</td>
+				<td>1</td>
+				<td>yoonn1011@naver.com</td>
+				<td></td>
+				<td>010-2253-7812</td>
+			</tr>
+		
+			<tr>
+				<td>95</td>
+				<td></td>
+				<td>사회복지학부</td>
+				<td>20152335</td>
+				<td>윤지호
+					
+				</td>
+				<td>2</td>
+				<td>toedpa3747@naver.com</td>
+				<td></td>
+				<td>010-4921-4974</td>
+			</tr>
+		
+			<tr>
+				<td>96</td>
+				<td></td>
+				<td>체육학과</td>
+				<td>20194135</td>
+				<td>이건우
+					
+				</td>
+				<td>1</td>
+				<td>sun2s1@naver.com</td>
+				<td></td>
+				<td>010-2707-8042</td>
+			</tr>
+		
+			<tr>
+				<td>97</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195210</td>
+				<td>이겸
+					
+				</td>
+				<td>1</td>
+				<td>dlrua0053@gmail.com</td>
+				<td></td>
+				<td>010-2196-5059</td>
+			</tr>
+		
+			<tr>
+				<td>98</td>
+				<td></td>
+				<td>언어병리학전공</td>
+				<td>20154238</td>
+				<td>이나영
+					
+				</td>
+				<td>4</td>
+				<td>lny0825@naver.com</td>
+				<td></td>
+				<td>010-2814-2847</td>
+			</tr>
+		
+			<tr>
+				<td>99</td>
+				<td></td>
+				<td>사회복지학부</td>
+				<td>20192335</td>
+				<td>이도희
+					
+				</td>
+				<td>1</td>
+				<td>cjscjsdudnql@naver.com</td>
+				<td></td>
+				<td>010-4906-7790</td>
+			</tr>
+		
+			<tr>
+				<td>100</td>
+				<td></td>
+				<td>간호학</td>
+				<td>20196265</td>
+				<td>이동연
+					
+				</td>
+				<td>1</td>
+				<td>wooba12@naver.com</td>
+				<td></td>
+				<td>010-7671-4330</td>
+			</tr>
+		
+			<tr>
+				<td>101</td>
+				<td></td>
+				<td>간호학</td>
+				<td>20186256</td>
+				<td>이동준
+					
+				</td>
+				<td>1</td>
+				<td>djjh1029@hanmail.net</td>
+				<td></td>
+				<td>010-7150-0353</td>
+			</tr>
+		
+			<tr>
+				<td>102</td>
+				<td></td>
+				<td>바이오메디컬학과</td>
+				<td>20193628</td>
+				<td>이동훈
+					
+				</td>
+				<td>1</td>
+				<td>donghzzang@naver.com</td>
+				<td></td>
+				<td>010-6253-4872</td>
+			</tr>
+		
+			<tr>
+				<td>103</td>
+				<td></td>
+				<td>심리학과</td>
+				<td>20162124</td>
+				<td>이상우
+					
+				</td>
+				<td>1</td>
+				<td>gq82y17@naver.com</td>
+				<td></td>
+				<td>010-8892-3969</td>
+			</tr>
+		
+			<tr>
+				<td>104</td>
+				<td></td>
+				<td>바이오메디컬학과</td>
+				<td>20193630</td>
+				<td>이상원
+					
+				</td>
+				<td>1</td>
+				<td>leeso1221@naver.com</td>
+				<td></td>
+				<td>010-4056-1041</td>
+			</tr>
+		
+			<tr>
+				<td>105</td>
+				<td></td>
+				<td>생명과학과</td>
+				<td>20163530</td>
+				<td>이상윤
+					
+				</td>
+				<td>1</td>
+				<td>ssikung97@naver.com</td>
+				<td></td>
+				<td>010-5436-0632</td>
+			</tr>
+		
+			<tr>
+				<td>106</td>
+				<td></td>
+				<td>법학과</td>
+				<td>20162740</td>
+				<td>이소영
+					
+				</td>
+				<td>2</td>
+				<td>thdud3043@naver.com</td>
+				<td></td>
+				<td>010-5790-3043</td>
+			</tr>
+		
+			<tr>
+				<td>107</td>
+				<td></td>
+				<td>체육학과</td>
+				<td>20194139</td>
+				<td>이수현
+					
+				</td>
+				<td>1</td>
+				<td>leesoo52274@naver.com</td>
+				<td></td>
+				<td>010-8596-0295</td>
+			</tr>
+		
+			<tr>
+				<td>108</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20155334</td>
+				<td>이수형
+					
+				</td>
+				<td>2</td>
+				<td>tngud1898@naver.com</td>
+				<td></td>
+				<td>010-3238-1898</td>
+			</tr>
+		
+			<tr>
+				<td>109</td>
+				<td></td>
+				<td>바이오메디컬학과</td>
+				<td>20193632</td>
+				<td>이아란
+					
+				</td>
+				<td>1</td>
+				<td>dldkdldk1@naver.com</td>
+				<td></td>
+				<td>010-6267-7374</td>
+			</tr>
+		
+			<tr>
+				<td>110</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193236</td>
+				<td>이연제
+					
+				</td>
+				<td>1</td>
+				<td>duswp112233@naver.com</td>
+				<td></td>
+				<td>010-9342-5083</td>
+			</tr>
+		
+			<tr>
+				<td>111</td>
+				<td></td>
+				<td>경영학과</td>
+				<td>20152942</td>
+				<td>이원현
+					
+				</td>
+				<td>2</td>
+				<td>slul13@naver.com</td>
+				<td></td>
+				<td>010-7605-4660</td>
+			</tr>
+		
+			<tr>
+				<td>112</td>
+				<td></td>
+				<td>일본학과</td>
+				<td>20177018</td>
+				<td>이윤정
+					
+				</td>
+				<td>3</td>
+				<td>leeys9125@naver.com</td>
+				<td></td>
+				<td>010-4522-2726</td>
+			</tr>
+		
+			<tr>
+				<td>113</td>
+				<td></td>
+				<td>환경생명공학과</td>
+				<td>20193726</td>
+				<td>이재윤
+					
+				</td>
+				<td>1</td>
+				<td>jaeyun56@naver.com</td>
+				<td></td>
+				<td>010-4658-0737</td>
+			</tr>
+		
+			<tr>
+				<td>114</td>
+				<td></td>
+				<td>식품영양학과</td>
+				<td>20144139</td>
+				<td>이재한
+					
+				</td>
+				<td>3</td>
+				<td>woekd95@naver.com</td>
+				<td></td>
+				<td>010-7220-6529</td>
+			</tr>
+		
+			<tr>
+				<td>115</td>
+				<td></td>
+				<td>경영대학</td>
+				<td>20192955</td>
+				<td>이정인
+					
+				</td>
+				<td>1</td>
+				<td>wjddl2494@naver.com</td>
+				<td></td>
+				<td>010-5063-4682</td>
+			</tr>
+		
+			<tr>
+				<td>116</td>
+				<td></td>
+				<td>체육학과</td>
+				<td>20194142</td>
+				<td>이정훈
+					
+				</td>
+				<td>1</td>
+				<td>zhckd123@naver.com</td>
+				<td></td>
+				<td>010-6491-8043</td>
+			</tr>
+		
+			<tr>
+				<td>117</td>
+				<td></td>
+				<td>광고홍보학과</td>
+				<td>20192630</td>
+				<td>이지민
+					
+				</td>
+				<td>1</td>
+				<td>ljm1706@naver.com</td>
+				<td></td>
+				<td>010-6665-1706</td>
+			</tr>
+		
+			<tr>
+				<td>118</td>
+				<td></td>
+				<td>광고홍보학과</td>
+				<td>20166421</td>
+				<td>이지연
+					
+				</td>
+				<td>3</td>
+				<td>violet2734@gmail.com</td>
+				<td></td>
+				<td>010-3657-2734</td>
+			</tr>
+		
+			<tr>
+				<td>119</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195228</td>
+				<td>이찬우
+					
+				</td>
+				<td>1</td>
+				<td>bomulkc@naver.com</td>
+				<td></td>
+				<td>010-6242-5624</td>
+			</tr>
+		
+			<tr>
+				<td>120</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193241</td>
+				<td>이충현
+					
+				</td>
+				<td>1</td>
+				<td>soc07035@hanmail.net</td>
+				<td></td>
+				<td>010-8958-5597</td>
+			</tr>
+		
+			<tr>
+				<td>121</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193242</td>
+				<td>이현구
+					
+				</td>
+				<td>1</td>
+				<td>dnfkatls57@naver.com</td>
+				<td></td>
+				<td>010-3178-7185</td>
+			</tr>
+		
+			<tr>
+				<td>122</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20173245</td>
+				<td>이현정
+					
+				</td>
+				<td>2</td>
+				<td>1769hj@naver.com</td>
+				<td></td>
+				<td>010-4115-3048</td>
+			</tr>
+		
+			<tr>
+				<td>123</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193243</td>
+				<td>이현준
+					
+				</td>
+				<td>1</td>
+				<td>her4512@naver.com</td>
+				<td></td>
+				<td>010-4512-5851</td>
+			</tr>
+		
+			<tr>
+				<td>124</td>
+				<td></td>
+				<td>환경생명공학과</td>
+				<td>20193728</td>
+				<td>이혜진
+					
+				</td>
+				<td>1</td>
+				<td>hyeonsuk2476@daum.net</td>
+				<td></td>
+				<td>010-6320-3799</td>
+			</tr>
+		
+			<tr>
+				<td>125</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195230</td>
+				<td>이호승
+					
+				</td>
+				<td>1</td>
+				<td>hohoho1905@naver.com</td>
+				<td></td>
+				<td>010-2700-0424</td>
+			</tr>
+		
+			<tr>
+				<td>126</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195231</td>
+				<td>이호용
+					
+				</td>
+				<td>1</td>
+				<td>hoyujiin@naver.com</td>
+				<td></td>
+				<td>010-8791-4670</td>
+			</tr>
+		
+			<tr>
+				<td>127</td>
+				<td></td>
+				<td>경영대학</td>
+				<td>20192968</td>
+				<td>이효재
+					
+				</td>
+				<td>1</td>
+				<td>kk1911@hanmail.net</td>
+				<td></td>
+				<td>010-3288-1911</td>
+			</tr>
+		
+			<tr>
+				<td>128</td>
+				<td></td>
+				<td>광고홍보학과</td>
+				<td>20192631</td>
+				<td>이희연
+					
+				</td>
+				<td>1</td>
+				<td>anna1bora@naver.com</td>
+				<td></td>
+				<td>010-5473-2052</td>
+			</tr>
+		
+			<tr>
+				<td>129</td>
+				<td></td>
+				<td>바이오메디컬학과</td>
+				<td>20163646</td>
+				<td>임동호
+					
+				</td>
+				<td>1</td>
+				<td>ehdgh3574@nate.com</td>
+				<td></td>
+				<td>010-9282-3574</td>
+			</tr>
+		
+			<tr>
+				<td>130</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195234</td>
+				<td>임지운
+					
+				</td>
+				<td>1</td>
+				<td>kjhg2371@naver.com</td>
+				<td></td>
+				<td>010-4056-2371</td>
+			</tr>
+		
+			<tr>
+				<td>131</td>
+				<td></td>
+				<td>전자공학과</td>
+				<td>20155248</td>
+				<td>임효정
+					
+				</td>
+				<td>4</td>
+				<td>imhyojeong@naver.com</td>
+				<td></td>
+				<td>010-9349-9383</td>
+			</tr>
+		
+			<tr>
+				<td>132</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193247</td>
+				<td>장윤주
+					
+				</td>
+				<td>1</td>
+				<td>yuni6789@naver.com</td>
+				<td></td>
+				<td>010-7528-2377</td>
+			</tr>
+		
+			<tr>
+				<td>133</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195238</td>
+				<td>장정명
+					
+				</td>
+				<td>1</td>
+				<td>jungmyung14@naver.com</td>
+				<td></td>
+				<td>010-7711-9861</td>
+			</tr>
+		
+			<tr>
+				<td>134</td>
+				<td></td>
+				<td>미디어스쿨</td>
+				<td>20122626</td>
+				<td>전승화
+					
+				</td>
+				<td>4</td>
+				<td>skstmdghk@naver.com</td>
+				<td></td>
+				<td>010-7235-4556</td>
+			</tr>
+		
+			<tr>
+				<td>135</td>
+				<td></td>
+				<td>융합소프트웨어학과</td>
+				<td>20165331</td>
+				<td>전현지
+					
+				</td>
+				<td>2</td>
+				<td>gmlakdguswl@naver.com</td>
+				<td></td>
+				<td>010-7702-0638</td>
+			</tr>
+		
+			<tr>
+				<td>136</td>
+				<td></td>
+				<td>언어병리학전공</td>
+				<td>20183953</td>
+				<td>정다운
+					
+				</td>
+				<td>1</td>
+				<td>jdw3421@naver.com</td>
+				<td></td>
+				<td>010-3664-7301</td>
+			</tr>
+		
+			<tr>
+				<td>137</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195242</td>
+				<td>정다혜
+					
+				</td>
+				<td>1</td>
+				<td>nmnm7784@naver.com</td>
+				<td></td>
+				<td>010-2487-1921</td>
+			</tr>
+		
+			<tr>
+				<td>138</td>
+				<td></td>
+				<td>경제학과</td>
+				<td>20182973</td>
+				<td>정서용
+					
+				</td>
+				<td>1</td>
+				<td>clinchjsy@naver.com</td>
+				<td></td>
+				<td>010-5034-3044</td>
+			</tr>
+		
+			<tr>
+				<td>139</td>
+				<td></td>
+				<td>간호학</td>
+				<td>20196284</td>
+				<td>정지은
+					
+				</td>
+				<td>1</td>
+				<td>dominic0427@daum.net</td>
+				<td></td>
+				<td>010-8234-9429</td>
+			</tr>
+		
+			<tr>
+				<td>140</td>
+				<td></td>
+				<td>체육학과</td>
+				<td>20194150</td>
+				<td>정형빈
+					
+				</td>
+				<td>1</td>
+				<td>jhbwin0987@naver.com</td>
+				<td></td>
+				<td>010-4054-2090</td>
+			</tr>
+		
+			<tr>
+				<td>141</td>
+				<td></td>
+				<td>미디어스쿨</td>
+				<td>20192580</td>
+				<td>조가영
+					
+				</td>
+				<td>1</td>
+				<td>gazero00@naver.com</td>
+				<td></td>
+				<td>010-2462-1047</td>
+			</tr>
+		
+			<tr>
+				<td>142</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195254</td>
+				<td>조성빈
+					
+				</td>
+				<td>1</td>
+				<td>sxpaper@naver.com</td>
+				<td></td>
+				<td>010-5163-5523</td>
+			</tr>
+		
+			<tr>
+				<td>143</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195255</td>
+				<td>조성진
+					
+				</td>
+				<td>1</td>
+				<td>dnjsanr011@naver.com</td>
+				<td></td>
+				<td>010-5676-3232</td>
+			</tr>
+		
+			<tr>
+				<td>144</td>
+				<td></td>
+				<td>경영대학</td>
+				<td>20192991</td>
+				<td>조승희
+					
+				</td>
+				<td>1</td>
+				<td>chzh01234@naver.com</td>
+				<td></td>
+				<td>010-4691-3925</td>
+			</tr>
+		
+			<tr>
+				<td>145</td>
+				<td></td>
+				<td>경영대학</td>
+				<td>20192992</td>
+				<td>조아현
+					
+				</td>
+				<td>1</td>
+				<td>cyhappy0321@naver.com</td>
+				<td></td>
+				<td>010-4620-3429</td>
+			</tr>
+		
+			<tr>
+				<td>146</td>
+				<td></td>
+				<td>생명과학과</td>
+				<td>20163546</td>
+				<td>조재원
+					
+				</td>
+				<td>1</td>
+				<td>dia2033@naver.com</td>
+				<td></td>
+				<td>010-4531-2998</td>
+			</tr>
+		
+			<tr>
+				<td>147</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195259</td>
+				<td>조정덕
+					
+				</td>
+				<td>1</td>
+				<td>wjdejr0412@naver.com</td>
+				<td></td>
+				<td>010-8752-1513</td>
+			</tr>
+		
+			<tr>
+				<td>148</td>
+				<td></td>
+				<td>체육학과</td>
+				<td>20194152</td>
+				<td>조정환
+					
+				</td>
+				<td>1</td>
+				<td>0222harry@naver.com</td>
+				<td></td>
+				<td>010-9619-0325</td>
+			</tr>
+		
+			<tr>
+				<td>149</td>
+				<td></td>
+				<td>경제학과</td>
+				<td>20153165</td>
+				<td>조준원
+					
+				</td>
+				<td>2</td>
+				<td>dhkd3103@naver.com</td>
+				<td></td>
+				<td>010-3103-2456</td>
+			</tr>
+		
+			<tr>
+				<td>150</td>
+				<td></td>
+				<td>경제학과</td>
+				<td>20182987</td>
+				<td>조형민
+					
+				</td>
+				<td>1</td>
+				<td>mjsk5599115@naver.com</td>
+				<td></td>
+				<td>010-4338-8281</td>
+			</tr>
+		
+			<tr>
+				<td>151</td>
+				<td></td>
+				<td>경영대학</td>
+				<td>20192996</td>
+				<td>조혜수
+					
+				</td>
+				<td>1</td>
+				<td>hyesu0419@naver.com</td>
+				<td></td>
+				<td>010-6308-2457</td>
+			</tr>
+		
+			<tr>
+				<td>152</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20153433</td>
+				<td>진상우
+					
+				</td>
+				<td>2</td>
+				<td>sangw1215@naver.com</td>
+				<td></td>
+				<td>010-5038-1146</td>
+			</tr>
+		
+			<tr>
+				<td>153</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195264</td>
+				<td>채준혁
+					
+				</td>
+				<td>1</td>
+				<td>cjh4302@gmail.com</td>
+				<td></td>
+				<td>010-7114-4302</td>
+			</tr>
+		
+			<tr>
+				<td>154</td>
+				<td></td>
+				<td>체육학과</td>
+				<td>20194154</td>
+				<td>최동현
+					
+				</td>
+				<td>1</td>
+				<td>choidh002@naver.com</td>
+				<td></td>
+				<td>010-3398-5215</td>
+			</tr>
+		
+			<tr>
+				<td>155</td>
+				<td></td>
+				<td>금융재무학과</td>
+				<td>20177093</td>
+				<td>최영민
+					
+				</td>
+				<td>3</td>
+				<td>dudals0896@naver.com</td>
+				<td></td>
+				<td>010-4206-9788</td>
+			</tr>
+		
+			<tr>
+				<td>156</td>
+				<td></td>
+				<td>화학과</td>
+				<td>20193432</td>
+				<td>최지은
+					
+				</td>
+				<td>1</td>
+				<td>cje0317@naver.com</td>
+				<td></td>
+				<td>010-8916-8368</td>
+			</tr>
+		
+			<tr>
+				<td>157</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193260</td>
+				<td>최진아
+					
+				</td>
+				<td>1</td>
+				<td>pig1550@naver.com</td>
+				<td></td>
+				<td>010-3326-1550</td>
+			</tr>
+		
+			<tr>
+				<td>158</td>
+				<td></td>
+				<td>소프트웨어융합대학</td>
+				<td>20195273</td>
+				<td>최진욱
+					
+				</td>
+				<td>1</td>
+				<td>chlwlsdnr12345@naver.com</td>
+				<td></td>
+				<td>010-8827-2628</td>
+			</tr>
+		
+			<tr>
+				<td>159</td>
+				<td></td>
+				<td>환경생명공학과</td>
+				<td>20183738</td>
+				<td>최진호
+					
+				</td>
+				<td>1</td>
+				<td>cjh21188@gmail.com</td>
+				<td></td>
+				<td>010-2460-6530</td>
+			</tr>
+		
+			<tr>
+				<td>160</td>
+				<td></td>
+				<td>경영학과</td>
+				<td>20132944</td>
+				<td>한상훈
+					
+				</td>
+				<td>3</td>
+				<td>tkdgns4578@hanmail.net</td>
+				<td></td>
+				<td>010-7791-1882</td>
+			</tr>
+		
+			<tr>
+				<td>161</td>
+				<td></td>
+				<td>화학과</td>
+				<td>20193433</td>
+				<td>한세미
+					
+				</td>
+				<td>1</td>
+				<td>tpal9849@naver.com</td>
+				<td></td>
+				<td>010-9849-2555</td>
+			</tr>
+		
+			<tr>
+				<td>162</td>
+				<td></td>
+				<td>바이오메디컬학과</td>
+				<td>20163655</td>
+				<td>한세일
+					
+				</td>
+				<td>3</td>
+				<td>saeil0116@naver.com</td>
+				<td></td>
+				<td>010-9161-0116</td>
+			</tr>
+		
+			<tr>
+				<td>163</td>
+				<td></td>
+				<td>체육학과</td>
+				<td>20154369</td>
+				<td>허성인
+					
+				</td>
+				<td>2</td>
+				<td>tjddls0314@naver.com</td>
+				<td></td>
+				<td>010-3794-5107</td>
+			</tr>
+		
+			<tr>
+				<td>164</td>
+				<td></td>
+				<td>체육학과</td>
+				<td>20184156</td>
+				<td>허시온
+					
+				</td>
+				<td>1</td>
+				<td>seeony@naver.com</td>
+				<td></td>
+				<td>010-5967-1150</td>
+			</tr>
+		
+			<tr>
+				<td>165</td>
+				<td></td>
+				<td>미디어스쿨</td>
+				<td>20192592</td>
+				<td>허재현
+					
+				</td>
+				<td>1</td>
+				<td>hjh2301@naver.com</td>
+				<td></td>
+				<td>010-2264-5294</td>
+			</tr>
+		
+			<tr>
+				<td>166</td>
+				<td></td>
+				<td>환경생명공학과</td>
+				<td>20193738</td>
+				<td>허준성
+					
+				</td>
+				<td>1</td>
+				<td>gjwnstjd0430@naver.com</td>
+				<td></td>
+				<td>010-9426-4725</td>
+			</tr>
+		
+			<tr>
+				<td>167</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193261</td>
+				<td>허진성
+					
+				</td>
+				<td>1</td>
+				<td>hjs061905@naver.com</td>
+				<td></td>
+				<td>010-9046-6306</td>
+			</tr>
+		
+			<tr>
+				<td>168</td>
+				<td></td>
+				<td>데이터과학융합스쿨</td>
+				<td>20193263</td>
+				<td>홍유진
+					
+				</td>
+				<td>1</td>
+				<td>ghddbwls159@naver.com</td>
+				<td></td>
+				<td>010-9484-2085</td>
+			</tr>
+		
+			<tr>
+				<td>169</td>
+				<td></td>
+				<td>언어병리학전공</td>
+				<td>20183970</td>
+				<td>황주영
+					
+				</td>
+				<td>1</td>
+				<td>wndudwndyd@naver.com</td>
+				<td></td>
+				<td>010-7642-8784</td>
+			</tr>
+		
+			<tr>
+				<td>170</td>
+				<td></td>
+				<td>광고홍보학과</td>
+				<td>20132662</td>
+				<td>황희태
+					
+				</td>
+				<td>4</td>
+				<td>gmlxo0202@naver.com</td>
+				<td></td>
+				<td>010-2293-0862</td>
+			</tr>
+		
+	
+	
+</table>
+</form>
+</body>
+</html>
