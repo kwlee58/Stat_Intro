@@ -1,0 +1,42 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("pander", repos = "https://cran.rstudio.com")
+# install.packages("xlsx", repos = "https://cran.rstudio.com")
+library(xlsx)
+library(pander)
+library(knitr)
+panderOptions('table.split.table', Inf)
+```
+
+```{r, data, echo = FALSE}
+load("./red_and_black_intro_190224_data.RData")
+```
+
+<P style="page-break-before:always">
+
+```{r, red_names, echo = FALSE}
+pander(red_names[1:19, ], caption = "Red")
+```
+
+<P style="page-break-before:always">
+
+```{r, red_names.2, echo = FALSE}
+pander(red_names[20:38, ], caption = "Red")
+```
+
+<P style="page-break-before:always">
+
+```{r, black_names, echo = FALSE}
+pander(black_names[1:19, ], caption = "Black")
+```
+
+<P style="page-break-before:always">
+
+```{r, black_names.2, echo = FALSE}
+pander(black_names[20:38, ], caption = "Black")
+```
+
