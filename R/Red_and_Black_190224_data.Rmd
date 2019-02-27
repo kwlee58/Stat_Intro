@@ -19,7 +19,8 @@ panderOptions('table.split.table', Inf)
 ## Data
 
 ```{r, data}
-class_roll <- read.xlsx("../data/class_roll_intro190224.xlsx", 1, 
+class_roll <- read.xlsx("../data/class_roll_intro190224.xlsx", 
+                        sheetIndex = 1, 
                         startRow = 2, endRow = 78, 
                         colIndex = c(3:7, 9), colClasses = rep("character", 6), 
                         encoding = "UTF-8",
@@ -136,9 +137,9 @@ class_roll$dept %>%
   pander
 ```
 
-## 전체 명단 : 가나다순
-
 <P style="page-break-before:always">
+
+## 전체 명단 : 가나다순
 
 ```{r, echo = TRUE}
 class_roll$name %>%
@@ -148,9 +149,9 @@ class_roll$name %>%
   pander(row.names = FALSE)
 ```
 
-## 전체 명단 : 그룹 단위 가나다순
-
 <P style="page-break-before:always">
+
+## 전체 명단 : 그룹 단위 가나다순
 
 ```{r, list, echo = TRUE}
 class_roll %$%
@@ -159,6 +160,8 @@ class_roll %$%
   `colnames<-`(c("학번", "이름", "그룹")) %>%
   pander(row.names = FALSE)
 ```
+
+<P style="page-break-before:always">
 
 ## 집단별 출석부
 
