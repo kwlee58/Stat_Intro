@@ -27,7 +27,9 @@ reading <- read.xlsx("../data/reading.xlsx", 1,
                      colClasses = c(rep("character", 6), "numeric", rep("character", 2), 
                                     rep("numeric", 8), rep("character", 7), rep("numeric", 2),
                                     rep("character", 19), "numeric", rep("character", 33)), 
-                     header = TRUE, stringsAsFactors = FALSE)
+                     header = TRUE, 
+                     encoding = "UTF-8", 
+                     stringsAsFactors = FALSE)
 str(reading)
 head(reading)
 # na.all <- which(apply(is.na(reading[, -(1:6)]), 1, all))
