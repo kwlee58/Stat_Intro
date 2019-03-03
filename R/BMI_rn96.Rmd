@@ -29,6 +29,8 @@ sapply(rn96, mode)
 sapply(rn96, class)
 ```
 
+<P style = "page-break-before:always">
+
 ## Summary Statistics
 
 * `height` 와 `weight` 의 기초통계 살피기
@@ -91,12 +93,13 @@ summary(rn96_lm)
 
 * 1차 회귀식으로는 살피기 힘든 국소적인 변화를 살피기 위하여 `lowess()`를 이용한 local smoother를 추가한다.
 
-```{r, lowess, fig.width = 4, fig.height = 4}
+```{r, lowess, fig.width = 5, fig.height = 5}
 plot(weight ~ height, data = rn96)
 abline(lm(weight ~ height, data = rn96)$coefficient)
 lines(lowess(rn96$height, rn96$weight), col = "red")
 ```
 
+<P style = "page-break-before:always">
 
 ## BMI 계산하고 줄기-잎 그리기
 
@@ -119,6 +122,8 @@ str(rn96[1])
 height <- rn96$height
 weight <- rn96$weight
 ```
+
+<P style = "page-break-before:always">
 
 ### BMI 계산
 
@@ -150,6 +155,8 @@ stem(BMI, scale = 2)
 stem(height)
 stem(weight)
 ```
+
+<P style = "page-break-before:always">
 
 ### BMI를 토대로 한 비만도 판정
 
