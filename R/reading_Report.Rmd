@@ -12,6 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(xlsx)
 library(pander)
 library(knitr)
+library(magrittr)
 panderOptions('table.split.table', Inf)
 panderOptions('table.alignment.rownames', 'left')
 panderOptions('table.alignment.default', 'right')
@@ -21,8 +22,8 @@ options(width = 180, digits = 3)
 <!--## Data-->
 
 ```{r, data, echo = FALSE, results = 'hide'}
-reading <- read.xlsx("../data/reading.xlsx", 1, 
-                     startRow = 4, endRow = 68, 
+reading <- read.xlsx("../data/reading_intro190227.xlsx", 1, 
+                     startRow = 4, endRow = 84, 
                      colIndex = c(3:7, 9:82), 
                      colClasses = c(rep("character", 6), "numeric", rep("character", 2), 
                                     rep("numeric", 8), rep("character", 7), rep("numeric", 2),
@@ -35,8 +36,10 @@ head(reading)
 # na.all <- which(apply(is.na(reading[, -(1:6)]), 1, all))
 # reading[is.na(reading)] <- NA
 # reading[na.all, -(1:6)] <- "결석"
-load("./red_and_black_data.RData")
-reading$group <- levels(class_roll$group)
+load("./red_and_black_intro_190224_data.RData")
+reading$group <- class_roll$group %>%
+  `[`(reading$id %>% match(class_roll$id))
+# reading$group <- levels(class_roll$group)
 reading$SQ2 <- factor(reading$SQ2, levels = 1:2, labels = c("남", "여"))
 reading$SQ3 <- factor(reading$SQ3, levels = 1:17, labels = c("서울", "부산", "대구", "인천", "광주", "대전", "울산", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주", "세종"))
 reading$SQ3 <- droplevels(reading$SQ3)
