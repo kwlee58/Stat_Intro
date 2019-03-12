@@ -92,7 +92,7 @@ cell_numbers %T>%
   pander
 ```
 
-## 성씨 분포
+<!--## 성씨 분포
 
 ```{r, name, echo = FALSE}
 f_name <- class_roll$name %>%
@@ -101,6 +101,7 @@ f_name %>%
   table(class_roll$group, .) %>%
   pander
 ```
+-->
 
 ## 많이 나오는 성씨
 

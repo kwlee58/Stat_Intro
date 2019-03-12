@@ -161,6 +161,7 @@ cell_numbers %>%
   chisq.test
 ```
 
+<!--
 ### 성씨 분포
 
 ```{r, name}
@@ -170,6 +171,7 @@ f_name %>%
   table(class_roll$group, .) %>%
   pander
 ```
+-->
 
 ### 많이 나오는 성씨
 
@@ -222,6 +224,6 @@ class_roll %$%
 class_roll %>%
   `[`(.$id %>% order, c("id", "group")) %>%
   saveRDS(file = "./class_id_group190301.RDS")
-save.image("./red_and_black_190301_data.RData")
+save.image("./red_and_black_intro_190301_data.RData")
 ```
 -->

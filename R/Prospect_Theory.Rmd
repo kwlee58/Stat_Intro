@@ -1,0 +1,205 @@
+---
+title: "Quiz 181107 : Prospect Theory"
+author: "coop711"
+date: "2018-11-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("pander", repos = "https://cran.rstudio.com")
+# install.packages("xlsx", repos = "https://cran.rstudio.com")
+library(xlsx)
+library(pander)
+library(knitr)
+library(magrittr)
+panderOptions('table.split.table', Inf)
+panderOptions('table.alignment.rownames', 'left')
+panderOptions('table.alignment.default', 'right')
+options(width = 180)
+```
+
+```{r, data, echo = FALSE, results = 'hide'}
+quiz1107 <- "../data/quiz181107.xlsx" %>% 
+  read.xlsx(sheetIndex = 1, 
+            startRow = 2, 
+            endRow = 155, 
+            colIndex = c(3:7, 9:14), 
+            colClasses = c(rep("character", 11)), 
+            stringsAsFactors = FALSE)
+names(quiz1107) <- c("dept", "id", "name", "year", "e.mail", "cell.no", "Q1", "Q2", "Q3", "Q4", "group")
+quiz1107$dept %<>% 
+  factor
+quiz1107$year %<>% 
+  factor
+quiz1107$group %<>% 
+  factor(levels = c("Red", "Black"))
+quiz1107$Q1 %<>% 
+  factor(levels = c("가", "나", "다", "라"), 
+         labels = c("대공황, 대침체", 
+                    "대침체, 대공황", 
+                    "대번영, 대공황", 
+                    "대공황, 대번영"))
+quiz1107$Q2 %<>% 
+  factor(levels = c("가", "나", "다", "라"), 
+         labels = c("소득불평등, 양의상관", 
+                    "소득, 양의 상관", 
+                    "소득불평등, 인과관계", 
+                    "소득, 인과관계"))
+quiz1107$Q3 %<>% 
+  factor(levels = c("가", "나", "다", "라", "무응답"), 
+         labels = c("7.0%", "35%", "70%", "94%", "불참"))
+quiz1107$Q4 %<>% 
+  factor(levels = c("A", "B", "무응답"))
+# quiz1107$Q4.2 <- quiz1107$Q4
+# quiz1107$Q4.2[quiz1107$group == "Black"] <- factor(quiz1107$Q4.2[quiz1107$group == "Black"], levels = c("A", "B"), labels = c("100%확률로 잃기", "90%확률로 잃기"))
+# quiz1107$Q4.2[quiz1107$group == "Red"] <- factor(quiz1107$Q4.2[quiz1107$group == "Red"], levels = c("A", "B"), labels = c("100%확률로 따기", "90%확률로 따기"))
+str(quiz1107)
+```
+
+```{r, randomization, echo = FALSE, results = 'hide'}
+quiz1107 %>% summary %>% pander
+```
+
+## 퀴즈 응답 비교
+
+### 소득 상위1%의 몫과 시대적 사건들
+
+`r knitr::include_graphics("../pics/Quiz171030_01.png", dpi = NA)`
+
+#### 대공황. 대번영, 대침체
+
+```{r, times, echo = FALSE}
+tbl_q1_a <- quiz1107$Q1 %>% 
+  table(quiz1107$group, ., useNA = "ifany") %>%
+  cbind("계" = rowSums(.)) %>%
+  rbind("계" = colSums(.))
+colnames(tbl_q1_a)[5] %<>% `<-`(., "결석")
+tbl_q1_a %>% 
+  pander 
+# tbl_q1_a[-3, -4] %>% 
+#   chisq.test(simulate.p.value = TRUE) %>% 
+#   pander
+```
+
+#### 대공황. 대번영, 대침체(%)
+
+```{r,times in percentage, echo = FALSE}
+tbl_q1_a %>% 
+  `[`(3, -(5:6)) %>%
+  prop.table %>% 
+  c(., "계" = sum(.)) %>%
+  `*`(100) %>%
+  format(digits = 1, nsmall = 1) %>%
+  pander
+```
+
+### Wilkinson
+
+`r knitr::include_graphics("../pics/Quiz171030_02.png", dpi = NA)`
+
+#### 소득불평등과 건강 및 사회문제 지표
+
+```{r, inequality, echo = FALSE}
+tbl_q2_a <- quiz1107$Q2 %>%
+  table(quiz1107$group, ., useNA = "ifany") %>%
+  cbind("계" = rowSums(.)) %>%
+  rbind("계" = colSums(.))
+colnames(tbl_q2_a)[6] <- "결석"
+tbl_q2_a %>% 
+  pander 
+# tbl_q2_a %>%
+#   `[`(-3, -(5:6)) %>% 
+#   chisq.test(simulate.p.value = TRUE) %>%
+#   pander
+```
+
+#### 소득불평등과 건강 및 사회문제 지표 (%)
+
+```{r, inequality in percentage, echo = FALSE}
+tbl_q2_a %>%
+  `[`(3, -(5:6)) %>%
+  prop.table %>%
+  c(., "계" = sum(.)) %>%
+  `*`(100) %>%
+  format(., digits = 2, nsmall = 1) %>%
+  pander
+```
+
+### 1944년 미국의 최고소득세율
+
+`r knitr::include_graphics("../pics/quiz171030_03.png", dpi = NA)`
+
+#### 최고소득세율 94%
+
+```{r, MTR, echo = FALSE}
+tbl_q3_a <- quiz1107$Q3 %>%
+  table(quiz1107$group, ., useNA = "ifany") %>%
+  cbind("계" = rowSums(.)) %>%
+  rbind("계" = colSums(.))
+colnames(tbl_q3_a)[6] <- "결석"
+tbl_q3_a %>% 
+  pander
+tbl_q3_a[-3, -c(5, 7)] %>%
+  chisq.test(simulate.p.value = TRUE, B = 10000) %>%
+  pander
+```
+
+#### 최고소득세율 94% (%)
+
+```{r, MTRE in percentage, echo = FALSE}
+tbl_q3_a %>%
+  `[`(3, -(5:7)) %>%
+  prop.table %>%
+  c(., "계" = sum(.)) %>%
+  `*`(100) %>%
+  format(digits = 2, nsmall = 1) %>%
+  pander
+```
+
+## Prospect Theory
+
+### 이득과 손실
+
+#### Red 
+
+`r knitr::include_graphics("../pics/Quiz171030_04_red.png", dpi = NA)`
+
+#### Black
+
+`r knitr::include_graphics("../pics/Quiz171030_04_black.png", dpi = NA)`
+
+이득은 완전히 하고, 손실은 피하고자 하는 경향 확인. Red는 이득을 완전히 확보하려는 게임(A)에, Black은 손실을 확률적으로 피하려는 게임(B)을 많이 선택.
+
+#### 집계
+
+```{r, prospect theory, echo = FALSE}
+tbl_q4_a <- quiz1107$Q4 %>%
+  table(quiz1107$group, ., useNA = "ifany") %>%
+  cbind("계" = rowSums(.)) %>%
+  rbind("계" = colSums(.))
+colnames(tbl_q4_a) <- c("확률 100%", "확률 90%", "불참", "결석", "계")
+rownames(tbl_q4_a) <- c("이득 게임", "손실 게임", "계")
+tbl_q4_a %>% 
+  pander
+# tbl_q4_a %>%
+#   `[`(-3, -(3:4)) %>%
+#   chisq.test(simulate.p.value = FALSE) %>%
+#   pander
+```
+
+#### % 비교.  
+
+```{r, prospect theory  in percentage, echo = FALSE}
+tbl_q4_a %>% 
+  `[`(-3, -(3:5)) %>%
+  prop.table(margin = 1) %>%
+  `*`(100) %>%
+  cbind("계" = rowSums(.)) %>%
+  format(digits = 2, nsmall = 1) %>%
+  pander
+```
+
+```{r, save, echo = FALSE}
+#save.image("../R/quiz1107.rda")
+```

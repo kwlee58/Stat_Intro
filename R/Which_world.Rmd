@@ -1,0 +1,199 @@
+---
+title: "Quiz 181105_2 : Which World?"
+author: "coop711"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("pander", repos = "https://cran.rstudio.com")
+# install.packages("xlsx", repos = "https://cran.rstudio.com")
+library(xlsx)
+library(pander)
+library(knitr)
+library(magrittr)
+panderOptions('table.split.table', Inf)
+panderOptions('table.alignment.rownames', 'left')
+panderOptions('table.alignment.default', 'right')
+options(width=180)
+```
+
+```{r, data, echo = FALSE, results = 'hide'}
+quiz1105_2 <- "../data/quiz181105_2.xlsx" %>%
+  read.xlsx(sheetIndex = 1, 
+            startRow = 2, endRow = 155, 
+            colIndex = c(3:7, 9:14), colClasses = c(rep("character", 11)), 
+            stringsAsFactors = FALSE)
+quiz1105_2 %>%
+  str
+quiz1105_2 %<>%
+  `names<-`(c("dept", "id", "name", "year", "e.mail", "cell.no", "group", "Q1", "Q2", "Q3", "Q4"))
+# names(quiz1105_2) <- c("dept", "id", "name", "year", "e.mail", "cell.no", "group", "Q1", "Q2", "Q3", "Q4")
+quiz1105_2$dept %<>% 
+  factor
+quiz1105_2$year %<>%
+  factor
+quiz1105_2$group %<>% 
+  factor(levels = c("Red", "Black"))
+quiz1105_2$Q1 %<>% 
+  factor(levels = c("가", "나", "다", "라", "마"), 
+         labels = c("1%", "5%", "7%", "15%", "25%"))
+quiz1105_2$Q2 %<>% 
+  factor(levels = c("가", "나", "다", "라", "마"), 
+         labels = c("10%", "25%", "33%", "45%", "50%"))
+quiz1105_2$Q3 %<>% 
+  factor(levels = c("가", "나", "다", "라", "마", "무응답"), 
+         labels = c("10%", "25%", "33%", "45%", "50%", "불참"))
+quiz1105_2$Q4 %<>% 
+  factor(levels = c("가", "나"))
+levels(quiz1105_2$Q4[quiz1105_2$group == "Black"]) <- c("나", "가")
+quiz1105_2$Q4 %<>%
+  `levels<-` (c("내가 남보다", "남이 나보다"))
+# levels(quiz1105_2$Q4) <- c("내가 남보다", "남이 나보다")
+quiz1105_2$Q4
+```
+
+```{r, randomization, echo = FALSE, results = 'hide'}
+pander(summary(quiz1105_2))
+```
+
+## 퀴즈 응답 비교{#퀴즈}
+
+###소득 상위 1%의 소득점유율
+
+`r knitr::include_graphics("../pics/Quiz181105_2_01.png", dpi = NA)`
+
+#### 적정 수준?
+
+```{r, income concentration, echo = FALSE}
+tbl_q1_a <- quiz1105_2$Q1 %>% 
+  table(quiz1105_2$group, ., useNA = "ifany") %>%
+  cbind(., "계" = rowSums(.)) %>%
+  rbind(., "계" = colSums(.))
+colnames(tbl_q1_a)[6] %<>% `<-`(., "결석")
+tbl_q1_a %>% pander 
+
+```
+
+#### 적정 수준? (%)
+
+```{r, income concentration in percentage, echo = FALSE}
+tbl_q1_a %>% 
+  `[`(3, -(6:7)) %>%
+  prop.table %>% 
+  c(., "계" = sum(.)) %>%
+  `*`(100) %>%
+  format(digits = 2, nsmall = 1) %>%
+  pander
+```
+
+### 소득 상위 10%의 소득점유율
+
+`r knitr::include_graphics("../pics/Quiz181105_2_02.png", dpi = NA)`
+
+#### 적정 수준?
+
+```{r, your judgement, echo = FALSE}
+tbl_q2_a <- quiz1105_2$Q2 %>% 
+  table(quiz1105_2$group, ., useNA = "ifany") %>%
+  cbind(., "계" = rowSums(.)) %>%
+  rbind(., "계" = colSums(.))
+colnames(tbl_q2_a)[6] %<>% `<-`(., "결석")
+tbl_q2_a %>% pander 
+```
+
+#### 적정 수준? (%)
+
+```{r, your judgement in percentage, echo = FALSE}
+tbl_q2_a %>% 
+  `[`(3, -(6:7)) %>%
+  prop.table %>% 
+  c(., "계" = sum(.)) %>%
+  `*`(100) %>%
+  format(digits = 1, nsmall = 1) %>%
+  pander
+```
+
+### 소득 상위 10%의 소득점유율
+
+`r knitr::include_graphics("../pics/Quiz181105_2_03.png", dpi = NA)`
+
+#### 나의 판단
+
+```{r, gini coefficient improvement, echo = FALSE}
+tbl_q3_a <- quiz1105_2$Q3 %>% 
+  table(quiz1105_2$group, ., useNA = "ifany") %>%
+  cbind(., "계" = rowSums(.)) %>%
+  rbind(., "계" = colSums(.))
+colnames(tbl_q3_a)[7] %<>% `<-`(., "결석")
+tbl_q3_a %>% pander 
+```
+
+#### 나의 판단 (%)
+
+```{r, gini coefficient improvement in percentage, echo = FALSE}
+tbl_q3_a %>% 
+  `[`(3, -(6:8)) %>%
+  prop.table %>% 
+  c(., "계" = sum(.)) %>%
+  `*`(100) %>%
+  format(digits = 2, nsmall = 1) %>%
+  pander
+```
+
+## 내가 살고 싶은 세상
+
+### 내가 남보다, 혹은 남이 나보다
+
+#### Red 
+
+`r knitr::include_graphics("../pics/Quiz171023_04_red.png", dpi = NA)`
+
+#### Black
+
+`r knitr::include_graphics("../pics/Quiz171023_04_black.png", dpi = NA)`
+
+소득의 절대값이 아니라 상대 비교가 중요하다는 Solnick and Hemenway(1998)의 연구결과와 일치. 랜덤화하였지만 응답에는 차이가 없음.
+
+#### 집계
+
+```{r, social comparison, echo = FALSE}
+tbl_q4_a <- quiz1105_2$Q4 %>%
+  table(quiz1105_2$group, ., useNA = "ifany") %>%
+  cbind(., "계" = rowSums(.)) %>%
+  rbind(., "계" = colSums(.))
+colnames(tbl_q4_a)[3] <- "결석"
+rownames(tbl_q4_a)[1:2] <- c("Red('내가 남보다' 먼저)", "Black('남이 나보다' 먼저)")
+tbl_q4_a %>% 
+  pander
+```
+
+#### % 비교.  
+
+```{r, social comparison in percentage, echo = FALSE}
+tbl_q4_a %>% 
+  `[`(-3, -(3:4)) %>%
+  prop.table(margin = 1) %>%
+  `*`(100) %>%
+  cbind("계" = rowSums(.)) %>%
+  format(digits = 2, nsmall = 1) %>%
+  pander
+```
+
+#### 합산(%)
+
+```{r, percentage in sum, echo = FALSE}
+quiz1105_2$Q4 %>%
+  table(useNA = "no") %>%
+  prop.table %>%
+  `*`(100) %>%
+  c(., "계" = sum(.)) %>%
+  format(digits = 2, nsmall = 1) %>%
+  pander
+```
+
+
+```{r, save, echo = FALSE}
+#save.image("../R/quiz1105_2.RData"")
+```
