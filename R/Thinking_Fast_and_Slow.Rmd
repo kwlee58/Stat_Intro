@@ -238,7 +238,7 @@ tbl_q3_a %>%
   pander
 ```
 
-### Q4. Red에 구체적 문제 먼저 질문 
+### Q4. Red에 구체적 문제 나중 질문 
 
 `r knitr::include_graphics("../pics/Wason_Selection_2.png", dpi = NA)`
 
@@ -252,7 +252,7 @@ tbl_q4_a <- data0311$Q4_2 %>%
   cbind("계" = rowSums(.)) %>%
   rbind("계" = colSums(.))
 colnames(tbl_q4_a) <- c("정답", "오답", "결석", "계")
-rownames(tbl_q4_a) <- c("Red(구체적 질문 먼저)", "Black(추상적 질문 먼저)", "계") 
+rownames(tbl_q4_a) <- c("Red(구체적 질문 나중)", "Black(추상적 질문 나중)", "계") 
 pander(tbl_q4_a, caption = "Wason Selection 1 in Black")
 ```
 
