@@ -39,7 +39,7 @@ data0311$group %<>%
   factor(levels = c("Red", "Black"))
 data0311$Q1 %<>% 
   factor(levels = c("가", "나"))
-levels(data0311$Q1[data0311$group == "Black"]) <- c("나", "가")
+levels(data0311$Q1[data0311$group == "Red"]) <- c("나", "가")
 data0311$Q1 %<>%
   `levels<-` (c("고수한다", "바꾼다"))
 data0311$Q2 %<>% 
@@ -109,7 +109,7 @@ data0311 %>% summary %>% pander
 
 `r knitr::include_graphics("../pics/Quiz171106_04_black.png", dpi = NA)`
 
-염소가 들어있는 문을 보여줌으로써 다른 문에 자동차가 들어 있을 확률은 2/3로 늘어나므로 바꾸는 것이 적절한 판단임. Red와 Black의 차이는 "바꾼다"와 "고수한다"의 순서를 바꾼 것으로 "바꾼다"를 앞에 놓은 Black 집단에서 바꾼다는 응답이 다소 높게 나왔으나 통계적으로 유의한 수준은 아님.
+염소가 들어있는 문을 보여줌으로써 다른 문에 자동차가 들어 있을 확률은 2/3로 늘어나므로 바꾸는 것이 적절한 판단임. Red와 Black의 차이는 "바꾼다"와 "고수한다"의 순서를 바꾼 것으로 "바꾼다"를 앞에 놓은 Black 집단에서 바꾼다는 응답이 높게 나오지 않을까 기대하였으나 거의 같은 수준으로 나옴.
 
 #### 집계
 
@@ -439,6 +439,10 @@ colnames(tbl_q8_a)[4] <- "결석"
 #> 카이제곱 테스트
 tbl_q8_a %>% 
   pander
+# tbl_q8_a %>%
+#   `[`(-3, 3:5) %>%
+#   chisq.test(simulate.p.value = FALSE) %>%
+#   pander
 ```
 
 #### % 비교.  
