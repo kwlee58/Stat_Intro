@@ -108,3 +108,12 @@ title(main = "Percentage of Inhalers")
 #            main = "Percentage of Inhalers", 
 #            xlab = "Group", 
 #            ylab = "Percentage")
+
+library(tidyverse)
+Nature1_tbl <- Nature1 %>%
+  as_tibble %>%
+  mutate(Twins = row.names(Nature1)) %>%
+  gather(key = "Resemblance", value = "Counts", -Twins) %>%
+  mutate(Twins = factor(Twins, levels = c("Identical", "Fraternal")),
+         Resemblance = factor(Resemblance, levels = c("Alike", "Somewhat_Alike", "Not_Alike")))
+Nature1_tbl
