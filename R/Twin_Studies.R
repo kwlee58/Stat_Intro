@@ -7,7 +7,7 @@ library(RColorBrewer)
 cols <- brewer.pal(8, "Accent")
 Nature1_p <- prop.table(Nature1, margin = 1) * 100
 c1 <- ncol(Nature1)
-b1 <- barplot(t(Nature1_p), space = 0.8, col = cols[1:3], yaxt = "n")
+b1 <- barplot(t(Nature1_p), width = 0.5, xlim = c(0, 2.7), space = 1.2, col = cols[1:3], yaxt = "n")
 axis(side = 2,
      at = apply(t(Nature1_p), MARGIN = 2, cumsum),
      labels = format(apply(t(Nature1_p), MARGIN = 2, cumsum), digits = 3, nsmall = 1), las = 2)
@@ -15,7 +15,7 @@ y_text <- c(t(Nature1_p)[1, ] / 2,
             t(Nature1_p)[1, ]  + t(Nature1_p)[2, ] / 2, 
             t(Nature1_p)[1, ]  + t(Nature1_p)[2, ] + t(Nature1_p)[3, ] / 2)
 text(rep(b1, 3), y_text, labels = c(Nature1))
-legend("top", fill = cols[3:1], legend = rev(colnames(Nature1)))
+legend("topleft", inset = 0.01, fill = cols[3:1], legend = rev(colnames(Nature1)))
 title(main = "Smoking Habits of Twins")
 mosaicplot(Nature1, 
            col = cols[1:3], 
@@ -117,3 +117,15 @@ Nature1_tbl <- Nature1 %>%
   mutate(Twins = factor(Twins, levels = c("Identical", "Fraternal")),
          Resemblance = factor(Resemblance, levels = c("Alike", "Somewhat_Alike", "Not_Alike")))
 Nature1_tbl
+Nature2_tbl <- Nature2 %>%
+  as_tibble %>%
+  mutate(Twins = row.names(Nature2)) %>%
+  gather(key = "Resemblance", value = "Counts", -Twins) %>%
+  mutate(Twins = factor(Twins, levels = c("Identical", "Fraternal")),
+         Resemblance = factor(Resemblance))
+Nature3_tbl <- Nature3 %>%
+  as_tibble %>%
+  mutate(Separation = row.names(Nature3)) %>%
+  gather(key = "Resemblance", value = "Counts", -Separation) %>%
+  mutate(Separation = factor(Separation),
+         Resemblance = factor(Resemblance) )
