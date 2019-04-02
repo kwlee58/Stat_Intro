@@ -129,3 +129,11 @@ Nature3_tbl <- Nature3 %>%
   gather(key = "Resemblance", value = "Counts", -Separation) %>%
   mutate(Separation = factor(Separation),
          Resemblance = factor(Resemblance) )
+DollnHill_tbl <- DollnHill %>%
+  as_tibble %>%
+  mutate(Group = row.names(DollnHill)) %>%
+  gather(key = "Smoking", value = "Counts", -Group) %>%
+  mutate(Group = factor(Group, 
+                        levels = c("Lung Cancer", "Control"), 
+                        labels = c("Lung_Cancer", "Control")),
+         Smoking = factor(Smoking, labels = c("1-4", "5-14", "15-24", "25-49", "50_more")))
