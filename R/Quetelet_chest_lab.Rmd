@@ -87,7 +87,7 @@ barplot(chest_table$Freq / total)
 
 ```{r, barplot white, fig.width = 8, fig.height = 4}
 barplot(chest_table$Freq / total, 
-        names.arg = 33:48, 
+        names.arg = chest_table$Chest, 
         space = 0, 
         col = "white")
 ``` 
@@ -121,62 +121,6 @@ sd(chest_long)
 
 <P style = "page-break-before:always">
 
-## Histogram
-
-히스토그램을 직관적으로 그려보면 $y$축은 돗수가 기본값임을 알 수 있음.
-
-```{r, frequency histogram, fig.width = 8, fig.height = 4}
-hist(chest_long)
-```
-
-정규분포와 비교하기 위해서 $y$축을 확률로 나타내려면
-
-```{r, probability histogram, fig.width = 8, fig.height = 4}
-hist(chest_long, 
-     probability = TRUE)
-```
-
-<P style = "page-break-before:always">
-
-### Inside the histogram
-
-실제로 이 히스토그램을 그리는 데 계산된 값들은?
-
-```{r, histogram objects}
-(h_chest <- hist(chest_long, 
-                 plot = FALSE))
-list(breaks = h_chest$breaks, 
-     counts = h_chest$counts, 
-     density = h_chest$density, 
-     mids = h_chest$mids)
-```
-
-<P style = "page-break-before:always">
-
-평균값과 표준편차로부터 히스토그램의 위치가 0.5만큼 왼쪽으로 치우쳐 있다는 것을 알 수 있음. 제자리에 옮겨 놓기 위해서 `breaks` 매개변수를 32.5부터 48.5까지 1간격으로 설정
-
-```{r, move 0.5 inches, fig.width = 8, fig.height = 4}
-hist(chest_long, 
-     probability = TRUE, 
-     breaks = 32.5:48.5)
-```
-
-위의 히스토그램을 그리느라고 계산된 값들은?
-
-```{r, histogram2 objects}
-h_chest_2 <- hist(chest_long, 
-                  breaks = 32.5:48.5, 
-                  plot = FALSE)
-list(breaks = h_chest_2$breaks, 
-     counts = h_chest_2$counts, 
-     density = h_chest_2$density, 
-     mids = h_chest_2$mids)
-```
-
-<P style = "page-break-before:always">
-
-히스토그램을 보기 쉽게 하기 위해서 메인 타이틀과 서브 타이틀, x축 라벨, y축 라벨 설정
-
 ```{r, annotations, fig.width = 8, fig.height = 4}
 main_title <- "Fitting Normal Distribution"
 sub_title <- "Chest Circumferences of Scottish Soldiers"
@@ -203,13 +147,14 @@ mean_chest <- mean(chest_long)
 sd_chest <- sd(chest_long)
 x_lower <- mean_chest - sd_chest
 x_upper <- mean_chest + sd_chest
-hist(chest_long, 
-     breaks = 32.5:48.5, 
-     probability = TRUE, 
-     main = main_title, 
-     sub = sub_title, 
-     xlab = x_lab, 
-     ylab = y_lab)
+b <- barplot(chest_table$Freq / total,
+             names.arg = chest_table$Chest, 
+             space = 0,
+             col = "white",
+             main = main_title, 
+             sub = sub_title, 
+             xlab = x_lab, 
+             ylab = y_lab)
 abline(v = c(x_lower, x_upper), 
        lty = 2, 
        col = "red")

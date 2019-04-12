@@ -1,0 +1,301 @@
+---
+title: "Graphic Analysis of Lottery Data"
+author: "coop711"
+date: "2015년 3월 14일"
+output: html_document
+---
+
+Lottery Data Input
+-----------------
+
+
+- Pick-it 1976 New Jersey Lottery Game
+
+```{r}
+lottery<-read.table("lottery.txt",header=T)
+str(lottery)
+head(lottery)
+```
+
+- 기초통계량을 계산하고 lottery.number의 경우 이론값과 비교. 이론값이라 함은?
+
+```{r}
+summary(lottery)
+apply(lottery, 2, sd)
+```
+
+Graphic Analysis on lottery.number
+----------------------------------
+
+- 당첨번호는 0(사실상 000)에서 999 사이에 254회 추출한 랜덤표본으로 볼 수 있음. 줄기-잎 그림으로 그려 모양을 보고, 히스토그램 작성.
+
+```{r}
+stem(lottery$lottery.number,scale=5)
+```
+
+```{r fig.width=4, fig.height=4}
+h10<-hist(lottery$lottery.number)
+```
+
+- 메인 타이틀과 $x$축의 좌표이름, $y$축의 좌표이름의 디폴트값이 어떻게 주어지는지 살피고, 히스토그램 작성에 계산된 값들 확인(특히 $breaks, $counts, $density 유의)
+
+```{r}
+h10
+```
+
+- 각 계급의 경계선에 있는 관찰값들을 어떻게 처리하는 지 몇 가지 조건을 바꿔가면서 관찰. right=F로 인하여 $counts가 어덯게 변하였는가? attach()의 역할은 무엇인가?. (작업을 끝내기 전에 반드시 detach()할 것). 실제 취하는 값을 1000에서 999로 바꿨을 때, 그리고 include.lowest=F로 했을 때 각각 어떤 일이 일어나는지 확인하고 이유를 생각해 볼 것. list()로 표현하려는 것은 무엇이며 이름을 붙인 까닭은?
+
+```{r fig.width=8, fig.height=4}
+attach(lottery)
+par(mfrow=c(1,2))
+h10.2<-hist(lottery.number, breaks=seq(0,1000,by=100),include.lowest=T)
+h10.3<-hist(lottery.number, breaks=seq(0,1000,by=100),right=F)
+list(breaks=h10.2$breaks, counts=h10.2$counts, density=h10.2$density)
+list(breaks=h10.3$breaks, counts=h10.3$counts, density=h10.3$density)
+```
+
+- breaks 대신 nclass=10 을 사용하였을 때 결과 비교.
+
+```{r fig.width=4, fig.height=4}
+par(mfrow=c(1,1))
+h10.4<-hist(lottery.number, nclass=10)
+list(breaks=h10.4$breaks, counts=h10.4$counts, density=h10.4$density)
+```
+
+- 다양한 nclass 값에 대하여 히스토그램 작성. nclass로 요구했을 때 제대로 잘 작동하는가 확인.
+
+```{r fig.width=12, fig.height=12}
+opar<-par(no.readonly=TRUE)
+par(mfrow=c(3,3))
+hist(lottery.number, nclass=10, sub="nclass=10")
+hist(lottery.number, nclass=9, sub="ncalss=9")
+hist(lottery.number, nclass=8, sub="nclass=8")
+hist(lottery.number, nclass=7, sub="nclass=7")
+hist(lottery.number, nclass=6, sub="nclass=6")
+hist(lottery.number, nclass=5, sub="nclass=5")
+hist(lottery.number, nclass=4, sub="nclass=4")
+hist(lottery.number, nclass=3, sub="nclass=3")
+hist(lottery.number, nclass=2, sub="nclass=2")
+```
+
+- nclass=9, 8은 모두 nclass=10과 같고, nclass=7, 6, 4는 모두 nclass=5와 같으며, nclass=3 인 경우도 주문과 다르게 나온 점에 유의하고 일부 계산값 확인. argument 중에 sub="nclass=3" 을 놓아 둔채 plot=F 를 하면 어떻게 되는지 시험해 보시오.
+
+```{r fig.width=8, fig.height=4}
+par(mfrow=c(1,2))
+h4<-hist(lottery.number, nclass=4, plot=F)
+h3<-hist(lottery.number, nclass=3, plot=F)
+list(breaks=h4$breaks, counts=h4$counts, density=h4$density)
+list(breaks=h3$breaks, counts=h3$counts, density=h3$density)
+```
+
+- nclass=4, nclass=3 을 그리려면 breaks 조정. breaks 가 보다 확실한 방법!!
+
+```{r fig.width=8, fig.height=4}
+par(mfrow=c(1,2))
+h4.breaks<-hist(lottery.number, breaks=seq(0,1000, by=250), sub="(with Breaks)")
+h3.breaks<-hist(lottery.number, breaks=seq(0,999, by=333), sub="(with Breaks)")
+list(breaks=h4.breaks$breaks, counts=h4.breaks$counts, density=h4.breaks$density)
+list(breaks=h3.breaks$breaks, counts=h3.breaks$counts, density=h3.breaks$density)
+```
+
+- breaks로 계급의 갯수 조정. 
+
+```{r fig.width=12, fig.height=12}
+opar<-par(no.readonly=TRUE)
+par(mfrow=c(3,3))
+hist(lottery.number, breaks=seq(0,1000, by=100), sub="(with Breaks)")
+hist(lottery.number, breaks=seq(0,999, by=111), sub="(with Breaks)")
+hist(lottery.number, breaks=seq(0,1000, by=125), sub="(with Breaks)")
+hist(lottery.number, breaks=seq(0,1001, by=143), sub="(with Breaks)")
+hist(lottery.number, breaks=seq(0,1002, by=167), sub="(with Breaks)")
+hist(lottery.number, breaks=seq(0,1000, by=200), sub="(with Breaks)")
+hist(lottery.number, breaks=seq(0,1000, by=250), sub="(with Breaks)")
+hist(lottery.number, breaks=seq(0,999, by=333), sub="(with Breaks)")
+hist(lottery.number, breaks=seq(0,1000, by=500), sub="(with Breaks)")
+```
+
+- 히스토그램의 정보를 보다 알기 쉽게 타이틀과 좌표명을 손보려면 ann=F 사용. 다른 히스토그램들에도 적용해 볼 것.
+
+```{r fig.width=4, fig.height=4}
+par(mfrow=c(1,1))
+hist(lottery.number, breaks=seq(0,1000,by=250),ann=F)
+title(main="Histogram of Numbers Drawn", sub="(with Breaks Argument)", xlab="Number", ylab="Frequency")
+```
+
+Distribution of lottery.payoff
+-------------------------------
+
+- 이제 당첨번호와 당첨금액과의 관계를 살피기 전에 잠깐 당첨번호의 분포를 살펴보면
+
+```{r fig.width=4, fig.height=4}
+hist(lottery.payoff)
+```
+
+- 평균과 중앙값을 계산하여 화살표와 점선으로 표시하면 다음과 같이 할 수 있는데, 어느 것이 평균이고, 어느 것이 중앙값인가?
+
+```{r fig.width=4, fig.height=4}
+mean.payoff<-mean(lottery.payoff)
+med.payoff<-median(lottery.payoff)
+hist(lottery.payoff,axes=F,ylim=c(-10,100))
+axis(side=1,at=seq(0,1000,by=100),labels=paste(seq(0,1000,by=100)))
+arrows(x0=mean.payoff,y0=-10, x1=mean.payoff, y1=0, length=0.1, code=2)
+abline(v=med.payoff,lty=2,col="red")
+axis(side=2,at=seq(0,100,by=20),labels=paste(seq(0,100,by=20)))
+```
+
+The Relationship between lottery.number and lottery.payoff
+----------------------------------------------------------
+
+- 이제 두 변수의 산점도를 그려보자. 산점도는 관찰값의 $x$좌표와 $y$좌표를 평면 상에 나타낸 것이다. lottery 자료의 첫날 당첨번호와 당첨금액은 `lottery[1,]` 이므로, 각 좌표를  평면상에 나타내면 text() 함수를 
+이용하여 
+
+```{r fig.width=6, fig.height=6}
+plot(lottery[1,], xlim=c(0,1000), ylim=c(0,1000), axes=F, xlab="Number", ylab="Payoff")
+axis(side=1, at=c(0,500,810,1000), labels=c(0,500,810,1000))
+axis(side=2, at=c(0,190, 500 ,1000), labels=c(0,190, 500,1000))
+text(lottery[1,], labels=c("(810, 190)"), pos=1)
+arrows(x0=810,y0=190,x1=810,y1=0, code=2, length=0.2)
+arrows(x0=810,y0=190,x1=0,y1=190, code=2, length=0.2)
+```
+
+-  당첨번호 0, 499, 999에 해당하는 당첨금액을 찾아서 평면 상에 나타내면?
+
+```{r}
+id.0<-which(lottery$lottery.number==0)
+lottery[id.0,]
+id.499<-which(lottery$lottery.number==499)
+lottery[id.499,]
+id.999<-which(lottery$lottery.number==999)
+lottery[id.999,]
+```
+
+- 파악한 좌표를 평면 상에 points()를 이용하여 표시하고, text() 로 라벨을 붙임.
+
+```{r fig.width=6, fig.height=6}
+plot(lottery[1,], xlim=c(0,1000), ylim=c(0,1000), axes=F, xlab="Number", ylab="Payoff")
+axis(side=1, at=c(0,500,810,1000), labels=c(0,500,810,1000))
+axis(side=2, at=c(0,190, 500 ,1000), labels=c(0,190, 500,1000))
+text(lottery[1,], labels=c("(810, 190)"), pos=1)
+arrows(x0=810,y0=190,x1=810,y1=0, code=2, length=0.2)
+arrows(x0=810,y0=190,x1=0,y1=190, code=2, length=0.2)
+points(lottery[c(id.0,id.499,id.999),])
+text(lottery[id.0,], labels="(0, 96)", pos=4)
+text(lottery[c(id.499,id.999),], labels=c("(499, 869.5)", "(499, 247.5)", "(999, 239)"), pos=2)
+```
+
+- 다음, 당첨번호와 당첨금액 모두의 관계는 다음과 같이 나타낼 수 있음.
+
+```{r fig.width=8, fig.height=6}
+plot(lottery.number, lottery.payoff)
+```
+
+
+- 점의 모양을 바꾸고, 당첨금액이 600불 이상인 당첨번호들을 찾기 위하여 identify() 함수를 이용하면 마우스로 직접 찾을 수 있으나 r markdown 에서는 작동하지 않음. 
+
+```{r fig.width=8, fig.height=6}
+plot(lottery.number, lottery.payoff,pch=20)
+abline(h=600,lty=2)
+identify(lottery.number, lottery.payoff, n=5, labels=paste(lottery.number))
+```
+
+- which() 함수와 subscripting([  ]) 을 이용하여 찾아보면 
+
+```{r fig.width=8, fig.height=6}
+high.payoff<-which(lottery.payoff>=600)
+high.payoff
+lottery.number[high.payoff]
+plot(lottery.number, lottery.payoff,pch=20)
+abline(h=600,lty=2)
+text(x=lottery.number[high.payoff],y=lottery.payoff[high.payoff],labels=lottery.number[high.payoff],pos=4)
+```
+
+- 당첨금액 상위 10위까지의 당첨번호를 살펴보면
+
+```{r}
+o.payoff<-order(lottery.payoff,decreasing=TRUE)
+lottery.payoff[o.payoff][1:10]
+lottery.number[o.payoff][1:10]
+```
+
+- 당첨번호와 당첨금액의 관계를 살피기 위하여 $y$축의 범위를 조정하고, 격자를 설치하면
+
+```{r fig.width=8, fig.height=6}
+plot(lottery.number, lottery.payoff,pch=20, ylim=c(0,1000))
+abline(h=seq(0,1000,by=250),lty=2)
+abline(v=seq(0,1000,by=100),lty=2)
+```
+
+- 흐름을 파악하기 위하여 local smoother 를 적용. 최소제곱법으로 구한 1차회귀선과 비교. legend()를 이용하여 범례를 만들 때에도 좌표를 주는 것 이외의 방법을 알아 둘 것.
+
+```{r fig.width=8, fig.height=6}
+plot(lottery.number, lottery.payoff,pch=20, ylim=c(0,1000))
+abline(lsfit(lottery.number, lottery.payoff)$coef)
+abline(h=seq(0,1000,by=250),lty=2)
+abline(v=seq(0,1000,by=100),lty=2)
+abline(lsfit(lottery.number, lottery.payoff)$coef)
+lines(lowess(lottery.number,lottery.payoff, f=1/3),col="blue")
+lines(lowess(lottery.number,lottery.payoff, f=2/3),col="red")
+legend(x=0,y=1000, lty=1, col=c("black","blue","red"), legend=c("lsfit","lowess, f=1/3","lowess, f=2/3"))
+```
+
+- 이제는 boxplot을 이용하여 자료의 특징을 살펴보자. 단순히 당첨번호와 당첨금액의 boxplot을 그려보는 것은 fivenum()을 확인하는 데 지나지 않으므로 산점도로부터 파악한 사실들을 일깨워 보자. 우선, 다섯 숫자 요약을 살펴보면
+
+```{r}
+apply(lottery, 2, fivenum)
+```
+
+- 당첨번호와 당첨금액의 boxplot을 나란히 그려보면
+
+```{r fig.width=8, fig.hegith=4}
+par(mfrow=c(1,2))
+boxplot(lottery.number, main="Numbers Drawn")
+boxplot(lottery.payoff, main="Payoff in Dollars")
+```
+
+- 당첨번호와 당첨금액의 관계를 boxplot()을 이용하여 살펴보려면 먼저 당첨번호를 계급으로 나누어야 함. 이때 cut() 을 이용하여 factor를 생성하게 됨. 먼저 혼동을 없애기 위해 lottery를 lottery.fac에 저장하고, classes.10를 생성. 이때 구간의 모양을 같게 하기 위하여 마지막 값을 어떻게 설정하였는지 유의. 
+
+```{r}
+lottery.fac<-lottery
+lottery.fac$classes.10<-cut(lottery.fac$lottery.number, breaks=c(seq(0,900, by=100),999), right=F)
+head(lottery.fac)
+detach()
+attach(lottery.fac)
+```
+
+- 이 상태로 당첨번호와 당첨금액의 관계를 boxplot으로 나타내면 관계는 명확히 파악할 수 있으나 $x$축이 너무 번잡하게 됨.
+
+```{r fig.width=8, fig.height=6}
+boxplot(lottery.payoff~classes.10, data=lottery.fac)
+```
+
+- classes.10 의 labels 들을 구간의 첫 글자로 만들어 주고, 다시 그리면.
+
+```{r fig.width=8, fig.height=6}
+lottery.fac$classes<-factor(classes.10, labels=0:9)
+head(lottery.fac)
+boxplot(lottery.payoff~classes, data=lottery.fac, main="Payoff by Numbers Drawn")
+```
+
+- boxplot() 대신에 그냥 plot()을 하면 어떻게 되는지 시도해 볼 것. 차이점은?
+
+- 이제 산점도에 각 변수의 주변분포(marginal distribution)를 표시해 보자. 당첨번호는 히스토그램으로, 당첨금액은 boxplot 으로 그려 본다. 
+
+```{r}
+par(fig=c(0,0.8,0,0.8))
+plot(lottery.payoff~lottery.number, data=lottery.fac, pch=20, xlab="Numbers Drawn", ylab="Payoff in Dollars")
+par(fig=c(0,0.8,0.55,1), new=TRUE)
+hist(lottery.number, axes=F, ann=F)
+par(fig=c(0.65,1,0,0.8), new=TRUE)
+boxplot(lottery.payoff, horiz=TRUE, axes=F)
+```
+
+- 이제 당첨금액이 높은 당첨번호들은 숫자가 중복되는 경우가 많고, 당첨번호가 0에서 100 이하인 경우에 당첨금액이 높은지 생각해 보자. detach(lottery)를 하지 않고 deatch()만 해도 되는 이유는 뭘까? save(file=filename, list=ls()) 와 같은 것이 save.image(file=filename) 임. 확인하기를^^
+
+```{r}
+detach()
+par(opar)
+save(file="lottery.RData",list=ls())
+```
+```
+savehistory("lottery.Rhistory")
+```
