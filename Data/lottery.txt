@@ -1,4 +1,4 @@
-"lottery.number" "lottery.payoff"
+"Number" "Payoff"
 810 190
 156 120.5
 140 285.5
