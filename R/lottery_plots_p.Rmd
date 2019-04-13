@@ -1,7 +1,7 @@
 ---
 title: "Graphic Analysis of Lottery Data"
 author: "coop711"
-date: "2015년 3월 14일"
+date: "2019년 4월 12일"
 output: html_document
 ---
 

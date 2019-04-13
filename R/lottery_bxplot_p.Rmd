@@ -1,7 +1,7 @@
 ---
 title: "Graphic Analysis of Lottery Data with Boxplots"
 author: "coop711"
-date: "2015년 3월 14일"
+date: "2019년 4월 12일"
 output: html_document
 ---
 
@@ -18,7 +18,7 @@ options(digits = 5)
 이제 두 변수의 산점도를 그려보자. 산점도는 관찰값의 $x$좌표와 $y$좌표를 평면 상에 나타낸 것이다. `lottery` 자료의 첫날 당첨번호와 당첨금액은 `lottery[1, ]` 이므로, 각 좌표를  평면상에 나타내려면 `text()` 함수를 
 이용하여 
 
-```{r fig.width=8, fig.height=4}
+```{r fig.width = 8, fig.height = 4}
 load("lottery.RData")
 # attach(lottery)
 par(mfrow = c(1, 2))
@@ -95,7 +95,7 @@ lottery %>%
 
 당첨번호와 당첨금액의 boxplot을 나란히 그려보면 (`mapply()`는 매우 유용한 함수임)
 
-```{r fig.width=8, fig.hegith=4}
+```{r fig.width = 8, fig.height = 6}
 par(mfrow = c(1, 2))
 lottery %>%
 mapply(boxplot, ., main = list("Numbers Drawn", "Payoff"))
@@ -147,7 +147,7 @@ plot(Payoff ~ nclass10, data = ., main = "Payoff by Numbers Drawn")
 
 이제 산점도에 각 변수의 주변분포(marginal distribution)를 표시해 보자. 당첨번호는 히스토그램으로, 당첨금액은 boxplot 으로 그려 본다. 
 
-```{r fig.width=8, fig.height=6}
+```{r fig.width = 8, fig.height = 6}
 opar <- par(no.readonly = TRUE)
 par(fig = c(0, 0.8, 0, 0.8))
 lottery %>%
