@@ -1,7 +1,7 @@
 ---
 title: "Birthday Problem"
 author: "coop711"
-date: "2018-11-28"
+date: "2019-04-29"
 output: html_document
 ---
 
@@ -251,7 +251,8 @@ birthday$month %>%
 
 `r knitr::include_graphics("../pics/birthday_Q1.png", dpi = NA)`
 
-인플레 없이 7%를 삭감하는 것과 12% 인플레 상황에서 5%임금 인상은 동등한 조건인데도 '임금인상'이라는 말에 '수용가능하다'는 응답 비율이 늘어남에 유의.
+나와 생일이 같은 사람이 있겠느냐는 질문에 3/4은 없을 것이라고 답을 했습니다. 
+생일이 같은 사람이 11명이나 되는 데 대해서 어떻게 생각할까요?
 
 ```{r, Money illusion, echo = FALSE}
 tbl_Q1_a <- birthday$Q1 %>%
