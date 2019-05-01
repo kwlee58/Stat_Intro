@@ -113,13 +113,12 @@ m2 <- m0 +
 ```{r, get_map}
 # install.packages("ggmap", repos = "https://cran.rstudio.com")
 library(ggmap)
-#> API 등록 필요함.
-register_google(key = "")
+#> 소스 코드 외부에서 API 등록 필요함.
 John_Snow_code <- geocode("John Snow, London, England", source = "google")
 m <- get_map(John_Snow_code, 
              zoom = 17, 
-             source = "google",
-             maptype = "roadmap")
+             source = "stamen",
+             maptype = "toner")
 # bbox <- c(-0.140, 51.509, -0.133, 51.518)
 # m <- get_map(bbox, 
 #              zoom = 17, 
@@ -213,6 +212,8 @@ snow <- ggmap(m) +
              aes(x = coords.x1,
                  y = coords.x2,
                  size = Count),
+             colour = "blue",
+             shape = 15,
              na.rm = TRUE)
 snow
 ```
@@ -229,7 +230,7 @@ snow +
   geom_point(data = as.data.frame(pumps_latlong),
              aes(x = coords.x1,
                  y = coords.x2,
-                 size = 4, 
+                 size = 4,
                  colour = "red"),
              na.rm = TRUE) +
 #  scale_colour_manual(guide = NULL)
