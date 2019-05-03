@@ -9,6 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Data
 
+<!--
 `mdsr`(Modern Data Science with R) 패키지와 공간 데이터 분석 전용 `sp` 패키지 설치.
 `sp`는 공간 객체에 대한 `class` 정의 포함.
 
@@ -23,13 +24,16 @@ str(CholeraDeaths)
 
 <P style = "page-break-before:always">
 
+-->
+
 ### John Snow의 콜레라 데이터 지도 (사망자)(1854년, 127명 사망)
 
-```{r}
+```{r, echo = FALSE}
 knitr::include_graphics("../pics/Snow-cholera-map-1.jpg", dpi = 96)
 ```
 
 <P style = "page-break-before:always">
+<!--
 
 ### 산점도
 
@@ -77,10 +81,12 @@ str(CholeraDeaths@data)
 str(Pumps@data)
 ```
 
+-->
 <P style = "page-break-before:always">
 
 ## ggplot
 
+<!--
 id와 Count의 산점도에서 출발.  
 
 ### spplot
@@ -118,8 +124,16 @@ library(ggmap)
 John_Snow_code <- geocode("John Snow, London, England", source = "google")
 m <- get_map(John_Snow_code, 
              zoom = 17, 
+#             source = "stamen",
+#             maptype = "terrain")
+#             source = "stamen",
+#             maptype = "watecolor")
              source = "stamen",
              maptype = "toner")
+#             source = "google",
+#             maptype = "roadmap")
+#             source = "google",
+#             maptype = "satellite")
 # bbox <- c(-0.140, 51.509, -0.133, 51.518)
 # m <- get_map(bbox, 
 #              zoom = 17, 
@@ -130,13 +144,15 @@ plot(m)
 ```
 
 <P style = "page-break-before:always">
+-->
 
 ### ggmap
 
-```{r, ggmap}
-ggmap(m, extent = "device")
+```{r, ggmap, echo = FALSE, fig.width = 10.5, fig.height = 10.5}
+ggmap(m, extent = "panel")
 ```
 
+<!--
 <P style = "page-break-before:always">
 
 ### Add Deaths Points
@@ -203,11 +219,22 @@ cholera_latlong <- CholeraDeaths %>%
   spTransform(CRS("+init=epsg:4326"))
 ```
 
+### Pumps added
+
+```{r}
+pumps <- readOGR(dsn, 
+                 layer = "Pumps")
+proj4string(pumps) <- CRS("+init=epsg:27700")
+pumps_latlong <- pumps %>% 
+  spTransform(CRS("+init=epsg:4326"))
+```
+
+-->
 <P style = "page-break-before:always">
 
-## Places of Deaths, Points by Size
+### Places of Deaths, Points by Size
 
-```{r, snow}
+```{r, snow, echo = FALSE, fig.width = 10.5, fig.height = 10.5}
 snow <- ggmap(m) +
   geom_point(data = as.data.frame(cholera_latlong),
              aes(x = coords.x1,
@@ -220,14 +247,16 @@ snow <- ggmap(m) +
 snow
 ```
 
-## Pumps added
+<P style = "page-break-before:always">
 
-```{r, Pumps, fig.width = 10.5, fig.height = 10.5}
-pumps <- readOGR(dsn, 
-                 layer = "Pumps")
-proj4string(pumps) <- CRS("+init=epsg:27700")
-pumps_latlong <- pumps %>% 
-  spTransform(CRS("+init=epsg:4326"))
+### Pumps added
+
+```{r, Pumps, echo = FALSE, message = FALSE, warning = FALSE, fig.width = 10.5, fig.height = 10.5}
+# pumps <- readOGR(dsn, 
+#                  layer = "Pumps")
+# proj4string(pumps) <- CRS("+init=epsg:27700")
+# pumps_latlong <- pumps %>% 
+#   spTransform(CRS("+init=epsg:4326"))
 snow + 
   geom_point(data = as.data.frame(pumps_latlong),
              aes(x = coords.x1,
@@ -240,9 +269,11 @@ snow +
   guides(colour = "none", shape = "none")
 ```
 
+<!--
 ## Save
 
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 ggsave(file = "../pics/Snow.png", device = "png", dpi = 320)
 save.image("./Snow.RData")
 ```
+-->

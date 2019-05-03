@@ -23,7 +23,7 @@ options(width = 180)
 -->
 
 ```{r, data, echo = FALSE, results = "hide"}
-load("./red_and_black_190317_data.RData")
+load("./red_and_black_intro_190224_data.RData")
 ```
 
 ### 학번

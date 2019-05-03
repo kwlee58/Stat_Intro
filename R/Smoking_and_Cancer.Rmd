@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Barplot
 
-```{r, fig.width = 8, fig.height = 8}
+```{r, fig.width = 6, fig.height = 6}
 Nature1 <- matrix(c(33, 11, 6, 6, 12, 16), nrow = 2)
 rownames(Nature1) <- c("Identical", "Fraternal")
 colnames(Nature1) <- c("Alike", "Somewhat_Alike", "Not_Alike")
@@ -25,7 +25,7 @@ library(RColorBrewer)
 cols <- brewer.pal(8, "Accent")
 Nature1_p <- prop.table(Nature1, margin = 1) * 100
 c1 <- ncol(Nature1)
-b1 <- barplot(t(Nature1_p), space = 0.8, col = cols[1:3], yaxt = "n")
+b1 <- barplot(t(Nature1_p), space = 1.5, col = cols[1:3], yaxt = "n")
 axis(side = 2,
      at = apply(t(Nature1_p), MARGIN = 2, cumsum),
      labels = format(apply(t(Nature1_p), MARGIN = 2, cumsum), digits = 3, nsmall = 1), las = 2)
@@ -39,24 +39,25 @@ title(main = "Smoking Habits of Twins")
 
 ### Mosaicplot
  
-```{r, fig.width = 5, fig.height = 5}
+```{r, fig.width = 6, fig.height = 6}
 mosaicplot(Nature1, 
            col = cols[1:3], 
            main = "Smoking Habits of Twins", 
            xlab = "Twins", 
-           ylab = "Resemblance")
+           ylab = "Resemblance",
+           cex.axis = 1)
 ```
    
 * Nature 1958 (pp 596)   
 
-```{r, fig.width = 8, fig.height = 8}  
+```{r, fig.width = 6, fig.height = 6}  
 Nature2 <- matrix(c(44, 9, 9, 9), nrow = 2)
 rownames(Nature2) <- c("Identical", "Fraternal")
 colnames(Nature2) <- c("Alike", "Not_Alike")
 Nature2
 Nature2_p <- prop.table(Nature2, margin = 1) * 100
 c2 <- ncol(Nature2)
-b2 <- barplot(t(Nature2_p), space = 0.8, col = cols[1:2], yaxt = "n")
+b2 <- barplot(t(Nature2_p), space = 1.2, col = cols[1:2], yaxt = "n")
 axis(side = 2,
      at = apply(t(Nature2_p), MARGIN = 2, cumsum),
      labels = format(apply(t(Nature2_p), MARGIN = 2, cumsum), digits = 3, nsmall = 1), las = 2)
@@ -69,26 +70,27 @@ title(main = "Smoking Habits of Twins 2")
 
 ### Mosaicplot
 
-```{r, fig.width = 5, fig.height = 5}
+```{r, fig.width = 6, fig.height = 6}
 mosaicplot(Nature2, 
            col = cols[1:2], 
            main = "Smoking Habits of Twins 2", 
            xlab = "Twins", 
-           ylab = "Resemblance")
+           ylab = "Resemblance",
+           cex.axis = 1)
 ```
 
 ## Living Separated or not
 
 ### Barplot
 
-```{r, fig.width = 8, fig.height = 8}
+```{r, fig.width = 6, fig.height = 6}
 Nature3 <- matrix(c(23, 21, 4, 5), nrow = 2)
 rownames(Nature3) <- c("Lived Together", "Seperated")
 colnames(Nature3) <- c("Alike", "Not_Alike")
 Nature3
 Nature3_p <- prop.table(Nature3, margin = 1) * 100
 c3 <- ncol(Nature3)
-b3 <- barplot(t(Nature3_p), space = 0.8, col = cols[1:2], yaxt = "n")
+b3 <- barplot(t(Nature3_p), space = 1.2, col = cols[1:2], yaxt = "n")
 axis(side = 2,
      at = apply(t(Nature3_p), MARGIN = 2, cumsum),
      labels = format(apply(t(Nature3_p), MARGIN = 2, cumsum), digits = 3, nsmall = 1), las = 2)
@@ -101,12 +103,13 @@ title(main = "Smoking Habits of Identical Twins")
 
 ### Mosaicplot
 
-```{r, fig.width = 5, fig.height = 5}
+```{r, fig.width = 6, fig.height = 6}
 mosaicplot(Nature3, 
            col = cols[3:2], 
            main = "Smoking Habits of Identical Twins", 
            xlab = "Lived Together?", 
-           ylab = "Resemblance")
+           ylab = "Resemblance",
+           cex.axis = 1)
 ```
 
 ## Retrospective Study by Doll & Hill
@@ -115,14 +118,14 @@ mosaicplot(Nature3,
 
 ### Barplot
 
-```{r, fig.width = 8, fig.height = 8}
+```{r, fig.width = 6, fig.height = 6}
 DollnHill <- matrix(c(24, 38, 208, 242, 196, 201, 164, 118, 45, 23), nrow = 2)
 rownames(DollnHill) <- c("Lung Cancer", "Control")
 colnames(DollnHill) <- c("1-4", "5-14", "15-24", "25-49", "50 more")
 DollnHill_p <- prop.table(DollnHill, margin = 1) * 100
 DollnHill_p
 c4 <- ncol(DollnHill)
-b4 <- barplot(t(DollnHill_p), space = 0.8, col = cols[1:5], yaxt = "n")
+b4 <- barplot(t(DollnHill_p), space = 1.2, col = cols[1:5], yaxt = "n")
 axis(side = 2,
      at = apply(t(DollnHill_p), MARGIN = 2, cumsum),
      labels = format(apply(t(DollnHill_p), MARGIN = 2, cumsum), digits = 2, nsmall = 1), las = 2)
@@ -138,12 +141,13 @@ title(main = "Retrospective Study : Doll & Hill")
 
 ### Mosaicplot
 
-```{r, fig.width = 5, fig.height = 5}
+```{r, fig.width = 6, fig.height = 6}
 mosaicplot(DollnHill, 
            col = cols[1:5], 
            main = "Retrospective Study : Doll & Hill", 
            xlab = "Group", 
-           ylab = "Number of Cigarettes Smoked")
+           ylab = "Number of Cigarettes Smoked",
+           cex.axis = 1)
 chisq.test(DollnHill)
 ```
 
@@ -151,14 +155,14 @@ chisq.test(DollnHill)
 
 ### Barplot
 
-```{r, fig.width = 8, fig.height = 8}
+```{r, fig.width = 6, fig.height = 6}
 DollnHill2 <- matrix(c(7, 17, 141, 162, 133, 157, 96, 74, 21, 16), nrow = 2)
 rownames(DollnHill2) <- c("Lung Cancer", "Control")
 colnames(DollnHill2) <- c("1-4", "5-14", "15-24", "25-49", "50 more")
 DollnHill2_p <- DollnHill2 / DollnHill * 100
 DollnHill2_p
 c5 <- ncol(DollnHill2)
-b5 <- barplot(t(DollnHill2_p), space = 0.8, col = cols[1:5], yaxt = "n")
+b5 <- barplot(t(DollnHill2_p), space = 1.2, col = cols[1:5], yaxt = "n")
 y_text5 <- c(t(DollnHill2_p)[1, ] / 2, 
              t(DollnHill2_p)[1, ]  + t(DollnHill2_p)[2, ] / 2, 
              t(DollnHill2_p)[1, ]  + t(DollnHill2_p)[2, ] + t(DollnHill2_p)[3, ] / 2,
