@@ -1,0 +1,92 @@
+---
+title: "Regression"
+author: "coop711"
+date: '2019 5 12 '
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Francis Galton
+
+## SunflowerPlot
+
+```{r}
+library(HistData)
+library(car)
+with(Galton, 
+     {
+       sunflowerplot(parent, child, xlim = c(63, 74), ylim = c(61, 74))
+       reg <- lm(child ~ parent)
+       abline(reg)
+       lines(lowess(parent, child), col = "green", lwd = 2)
+       if(require(car)) {
+         dataEllipse(parent, child, xlim = c(63, 74), ylim = c(61, 74), plot.points = FALSE)
+       }
+     })
+```
+
+## Pairs.Panels
+
+```{r}
+library(psych)
+data(galton)
+describe(galton)
+#show the scatter plot and the lowess fit 
+pairs.panels(galton, 
+             main = "Galton's Parent child heights")  
+#but this makes the regression lines look the same
+pairs.panels(galton, 
+             lm = TRUE, 
+             xlim = c(60, 75),
+             ylim = c(60, 75),
+             main = "Galton's Parent child heights") 
+#better is to scale them 
+pairs.panels(galton,
+             smooth = TRUE,
+             xlim = c(60, 75),
+             ylim = c(60, 75),
+             main = "Galton's Parent child heights")
+```
+
+# Pearson and Lee
+
+## dataEllipse
+
+```{r}
+with(PearsonLee, 
+     {
+       lim <- c(52, 80)
+       xv <- seq(52, 80, .5)
+       sunflowerplot(parent,child, number = frequency, xlim = lim, ylim = lim, seg.col = "gray", size = .1)
+       abline(lm(child ~ parent, weights = frequency), col = "blue", lwd = 2)
+       lines(xv, predict(loess(child ~ parent, weights = frequency), data.frame(parent = xv)), 
+             col = "red", lwd = 2)
+       # NB: dataEllipse doesn't take frequency into account
+       if(require(car)) {
+         dataEllipse(parent, child, xlim = lim, ylim = lim, plot.points = FALSE)
+       }
+     })
+```
+
+## ggplot
+
+```{r}
+library(ggplot2)
+ggplot(PearsonLee, aes(x = parent, y = child, weight = frequency)) +
+  geom_point(size = 1.5, position = position_jitter(width = 0.2)) +
+  geom_smooth(method = lm, 
+              aes(weight = frequency, colour = "Linear"), 
+              se = FALSE, size = 1.5) +
+  geom_smooth(method = loess, 
+              aes(weight = frequency, colour = "Loess"), 
+              se = FALSE, size = 1.5) +
+  facet_grid(chl ~ par) +
+  scale_colour_manual(breaks = c("Linear", "Loess"),
+                      values = c("green", "red")) +
+  theme(legend.position = c(0.14, 0.885),
+        legend.background = element_rect(fill = 'white'))
+```
+
