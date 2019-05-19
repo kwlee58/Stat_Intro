@@ -1,0 +1,130 @@
+---
+title: "ZeaMays Data"
+author: "coop711"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Data
+
+### `HistData`
+
+`ZeaMays` Data 는 `HistData` package 에 있음. 
+
+```{r}
+library(knitr)
+library(pander)
+# install.packages("HistData", repos = "http://cran.rstudio.com")
+library(HistData)
+pander(ZeaMays)
+str(ZeaMays)
+```
+<P style = "page-break-before:always">
+
+### Competition
+
+산점도로 Competition 현상 확인.
+
+```{r, fig.width = 8, fig.height = 4}
+par(mfrow = c(1, 2))
+plot(cross ~ self, 
+     data = ZeaMays, 
+     xlim = c(10, 25), 
+     ylim = c(10, 25))
+title(main = "Cross and Self Fertilisation")
+plot(cross ~ self, 
+     data = ZeaMays, 
+     pch = 16, 
+     xlim = c(10, 25), 
+     ylim = c(10, 25))
+title(main = "Cross and Self Fertilisation")
+abline(lm(cross ~ self, data = ZeaMays)$coef, 
+       col = "red")
+cor(ZeaMays$self, ZeaMays$cross)
+text(x = 15, y = 15, 
+     labels = paste("r =", round(cor(ZeaMays$cross, ZeaMays$self), digits = 3)))
+par(mfrow = c(1, 1))
+```
+
+<P style = "page-break-before:always">
+
+### Boxplot
+
+`boxplot()`으로 비교하면 이 현상을 파악하기 어려움. 같은 결과를 갖는 두 가지 `boxplot()` 작성 코드 비교.
+
+```{r fig.width=8, fig.height=4}
+par(mfrow = c(1,2))
+boxplot(ZeaMays[c("cross", "self")], 
+        ylab = "Height (in)", 
+        xlab = "Fertilisation")
+boxplot(ZeaMays$cross, ZeaMays$self, 
+        names = c("cross", "self"), 
+        ylab = "Height (in)", 
+        xlab = "Fertilisation")
+```
+
+<P style = "page-break-before:always">
+
+### Paired 1-sample t-test
+
+쌍으로 키우고 있으므르 성장의 차이는 paired one-sample t-test
+
+```{r}
+t.test(x = ZeaMays$cross, y = ZeaMays$self, 
+       paired = T)
+```
+
+또는 둘 사이의 차이인 diff 대하여 one-sample t-test 를 수행하여도 동일한 결과. 이 때는 모든 매개변수는 디폴트 값으로 충족됨에 유의.
+
+```{r}
+t.test(ZeaMays$diff)
+```
+
+<P style = "page-break-before:always">
+
+### Tests of Normality
+
+정규성에 대한 가정은 `ad.test()`로 수행
+
+```{r}
+library(nortest)
+sapply(ZeaMays[c("cross", "self", "diff")], 
+       FUN = ad.test)
+```
+
+cross 자료에 대한 정규성은 매우 의심되는 수준. `qqnorm()`으로 파악.
+
+```{r, fig.width = 12, fig.height = 4}
+par(mfrow = c(1,3))
+sapply(ZeaMays[c("cross", "self", "diff")], 
+       FUN = qqnorm)
+par(mfrow = c(1, 1))
+```
+
+<P style = "page-break-before:always">
+
+### Rank Tests 
+
+`t.test()`의 대안으로 `wilkox.test()` 수행. 먼저 signed ranks를 구하면. 
+
+```{r}
+sign(ZeaMays$diff) * rank(abs(ZeaMays$diff))
+```
+
+1에서 15까지 자연수의 합은 `r sum(1:15)` 이므로 통계량은 양의 부호 순위합임.
+
+```{r}
+wilcox.test(ZeaMays$cross,  ZeaMays$self)
+wilcox.test(ZeaMays$diff)
+```
+
+따라서, `cross`와 `self` 가 성장률이 동일하다는 가설은 기각됨. 화분 간의 차이가 있는지 분산분석으로 살핀다면
+
+### `anova()`
+
+```{r}
+kable(anova(lm(diff ~ pot, data = ZeaMays)))
+```
+
+따라서, 화분 간의 차이는 없다고 결론.
+

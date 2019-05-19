@@ -1,0 +1,266 @@
+---
+title: "Cushny and Peeble’s Data"
+author: "coop711"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Data Management
+
+### Data
+
+R-base에서 제공하고 있는 `sleep` data 는 long form data frame 으로 주어져 있음.
+
+```{r}
+library(knitr)
+sleep
+str(sleep)
+```
+
+<P style = "page-break-before: always">
+
+### Long Form vs Wide Form
+
+long form을  wide form으로 변환하고, 각각의 경우에 적절한 t-test를 시도해 볼 것임. 먼저 wide form 으로 변환하는 작업은 결국 data frame을 새로 구성하는 것일 뿐이므로 다음으로 완료됨.
+
+```{r}
+sleep_wide <- data.frame(A = sleep[sleep$group == 1, 1], 
+                         B = sleep[sleep$group == 2, 1])
+sleep_wide
+str(sleep_wide)
+sleep_wide$A
+sleep_wide[, "A"]
+sleep_wide[, 1]
+```
+
+<P style = "page-break-before: always">
+
+## One Sample T test
+
+### Long Form Data Frame
+
+long form 에서 각 수면제의 효과가 없다는 가설을 t-test 하려면 
+
+#### One sided t-test
+
+```{r}
+t.test(sleep$extra[sleep$group == 1], 
+       alternative = "greater")
+t.test(sleep$extra[sleep$group == 2], 
+       alternative = "greater")
+```
+
+<P style = "page-break-before: always">
+
+#### `tapply()`
+
+둘을 단번에 수행하려면 `tapply()`를 이용하여
+
+```{r}
+tapply(sleep$extra, 
+       INDEX = sleep$group, 
+       FUN = t.test, alternative = "greater")
+```
+
+<P style = "page-break-before: always">
+
+#### Paired t-test
+
+두 수면제 간의 효과에 차이가 없다는 가설을 검증하려면, paired 임을 유념하여야 함.
+
+```{r}
+t.test(sleep$extra[sleep$group == 1], sleep$extra[sleep$group == 2], 
+       paired = TRUE)
+```
+
+#### Formula form
+
+formula 형식을 빌리면 다음과 같이 비교적 간결하게 기술할 수 있음.
+
+```{r}
+t.test(extra ~ group, 
+       data = sleep, 
+       paired = TRUE)
+```
+
+<P style = "page-break-before: always">
+
+#### Boxplot
+
+두 수면제의 효과를 boxplot을 그려 비교하면(산점도를 그려 비교하려면 어떻게?)
+
+```{r, fig.width = 7, fig.height = 7}
+plot(extra ~ group, 
+     data = sleep, 
+     main = "Using Long Form")
+```
+
+<P style = "page-break-before: always">
+
+### Wide Form Data Frame
+
+wide form 으로 같은 작업을 수행하면
+
+#### `t.test()`
+
+```{r}
+t.test(sleep_wide$A, 
+       alternative = "greater")
+t.test(sleep_wide$B, 
+       alternative = "greater")
+```
+
+<P style = "page-break-before: always">
+
+#### `apply()`
+
+`apply()` 를 이용해서 한번에 수행하면
+
+```{r}
+apply(sleep_wide, 
+      MARGIN = 2, 
+      FUN = t.test, alternative="greater")
+```
+
+<P style = "page-break-before: always">
+
+#### Paired t-test
+
+두 수면제 간의 효과 차이를 검증하려면
+
+```{r}
+t.test(sleep_wide$A, sleep_wide$B, 
+       paired = T)
+```
+
+<P style = "page-break-before: always">
+
+#### Scatter Diagram
+
+각각의 효과를 산점도를 그려 비교하면
+
+```{r, fig.width = 7, fig.height = 7}
+plot(sleep_wide, 
+     main = "Using Wide Form", 
+     xlim = c(-2, 6), 
+     ylim = c(-2, 6))
+abline(a = 0, b = 1, 
+       col = "red")
+text(x = 4, y = 3, 
+     labels = "y = x")
+```
+
+<P style = "page-break-before: always">
+
+### 상관계수
+
+```{r}
+cor(sleep_wide$A, sleep_wide$B)
+```
+
+### Tests of Normality
+
+정규성에 대한 검증은 각자 수행해 볼 것.
+
+```{r}
+library(nortest)
+kable(sapply(sleep_wide, ad.test))
+```
+
+<P style = "page-break-before: always">
+
+## Dot Plot (ggplot)
+
+```{r, dotplots}
+library(ggplot2)
+library(grid)
+(g1 <- ggplot(data = sleep_wide) +
+    theme_bw())
+```
+
+<P style = "page-break-before: always">
+
+```{r}
+(g2 <- g1 + 
+    geom_point(mapping = aes(x = A, y = 1:10), 
+               shape = "A", 
+               size = 4))
+```
+
+<P style = "page-break-before: always">
+
+```{r}
+(g3 <- g2 + 
+    geom_point(mapping = aes(x = B, y = 1:10), 
+               shape = "B", 
+               size = 4))
+```
+
+<P style = "page-break-before: always">
+
+```{r}
+(g4 <- g3 + 
+    geom_segment(mapping = aes(x = ifelse(A >= 0, 0, B), 
+                               y = 1:10, 
+                               xend = ifelse(A >= 0, B, A), 
+                               yend = 1:10),
+                 size = 0.5,
+                 linetype = 1))
+```
+
+<P style = "page-break-before: always">
+
+```{r}
+(g5 <- g4 + 
+    geom_vline(xintercept = 0, 
+               linetype = 3))
+```
+
+<P style = "page-break-before: always">
+
+```{r}
+(g6 <- g5 + 
+    scale_y_continuous(name = "Patient ID", 
+                       breaks = 1:10, 
+                       labels = 1:10))
+```
+
+<P style = "page-break-before: always">
+
+```{r}
+(g7 <- g6 + 
+    scale_x_continuous(name = "Extra Hours of Sleep Gained",
+                       breaks = -2:7,
+                       labels = -2:7,
+                       limits = c(-2, 7)))
+```
+
+<P style = "page-break-before: always">
+
+```{r}
+(g8 <- g7 +
+    annotate("segment",
+            x = sleep_wide$A, 
+            xend = sleep_wide$B, 
+            y = 1:10, 
+            yend = 1:10, 
+            col = "red",
+            size = 0.5,
+            arrow = arrow(length = unit(0.3, "cm"),
+                          ends = "both")))
+```
+
+<P style = "page-break-before: always">
+
+```{r}
+(g9 <- g8 +
+    ggtitle("The Effects of Sleeping Pills A vs B") +
+    theme(plot.title = element_text(hjust = 0.5)))
+```
+
+## 작업 디렉토리 정리
+
+```{r}
+saveRDS(sleep_wide, 
+        file = "sleep_wide.RDS")
+```
