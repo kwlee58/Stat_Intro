@@ -1,0 +1,127 @@
+---
+title: "토계학 입문 : 베이스 규칙을 이용한 정보의 갱신"
+author: "coop711"
+date: "2019-05-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("pander", repos = "https://cran.rstudio.com")
+# install.packages("xlsx", repos = "https://cran.rstudio.com")
+library(xlsx)
+library(pander)
+library(knitr)
+library(magrittr)
+panderOptions('table.split.table', Inf)
+panderOptions('table.alignment.rownames', 'left')
+panderOptions('table.alignment.default', 'right')
+options(width = 180)
+```
+
+```{r, data, echo = FALSE, results = 'hide'}
+# load("./red_and_black_190317_data.RData")
+bayes <- "../data/Bayes190520.xlsx" %>%
+  read.xlsx(sheetIndex = 1, 
+            startRow = 2, 
+            endRow = 78, 
+            colIndex = c(3:7, 9:11), 
+            colClasses = c(rep("character", 10)), 
+            stringsAsFactors = FALSE)
+bayes %>% str
+names(bayes) <- c("dept", "id", "name", "year", "email", "cell_no", "Q1", "group")
+# bayes$group <- class_roll$group[match(bayes$id, class_roll$id)]
+bayes$dept %<>% 
+  factor
+bayes$year %<>% 
+  factor
+bayes$group %<>% 
+  factor(levels = c("Red", "Black"))
+bayes$Q1 %<>% 
+  factor(levels = c("가", "나"), labels = c("80퍼센트", "41퍼센트"))
+bayes %>% 
+  str
+```
+
+```{r, randomization, echo = FALSE, results = 'hide'}
+bayes %>% summary %>% pander
+```
+
+## Bayes 규칙을 이용한 정보의 갱신
+
+Red나 Black 공히 Bayes 규칙에 따라 계산하면 41퍼센트가 나온다. 
+다만, Red의 경우 통계기저율을 잘 인식하지 않는 성향에 따라 Black 보다 목격자가 제대로 판단헀을 확률 80퍼센트를 더 많이 고르는 것으로 알려져 있지만 반대의 결과가 관찰되었다. 물론 통계적으로 유의한 수준은 아니다.
+
+### Red
+
+`r knitr::include_graphics("../pics/Bayes190520_red.png", dpi = NA)`
+
+
+\begin{aligned} 
+Pr("블루 목격") &= Pr("그린")\times Pr("블루 목격"\mid "그린") + Pr("블루")\times Pr("블루 목격"\mid "블루") \\ 
+&= 0.85\times0.2 + 0.15\times0.8 \\
+&= 0.17 + 0.12\\
+\\
+Pr("블루"|"블루 목격") &= \frac{Pr("블루")\times Pr("블루 목격"\mid "블루")}{Pr("블루 목격")}\\
+&= \frac{0.12}{0.17 + 0.12} \\
+&= 0.41
+\end{aligned}
+
+
+### Black
+
+`r knitr::include_graphics("../pics/Bayes190520_black.png", dpi = NA)`
+
+\begin{aligned}
+Pr("블루 목격") &= Pr("그린 사고")\times Pr("블루 목격"\mid "그린 사고") + Pr("블루 사고")\times Pr("블루 목격"\mid "블루 사고") \\
+&= 0.85\times0.2 + 0.15\times0.8 \\
+&= 0.17 + 0.12\\
+\\
+Pr("블루 사고"\mid"블루 목격") &= \frac{Pr("블루 사고")\times Pr("블루 목격"\mid "블루 사고")}{Pr("블루 목격")}\\
+&= \frac{0.12}{0.17 + 0.12}\\
+&= 0.41
+\end{aligned}
+
+### 집계
+
+```{r, Monty Hall, echo = FALSE}
+tbl_q1_a <- bayes$Q1 %>%
+  table(bayes$group, ., useNA = "ifany") %>%
+  cbind("계" = rowSums(.)) %>%
+  rbind("계" = colSums(.))
+colnames(tbl_q1_a)[3] <- "결석"
+tbl_q1_a %>% 
+  pander
+tbl_q1_a %>%
+  `[`(-3, -4) %>%
+  chisq.test(simulate.p.value = FALSE) %>%
+  pander
+```
+
+### % 비교.  
+
+```{r, Monty Hall in percentage, echo = FALSE}
+tbl_q1_a %>% 
+  `[`(-3, -(3:4)) %>%
+  prop.table(margin = 1) %>%
+  `*`(100) %>%
+  cbind("계" = rowSums(.)) %>%
+  format(digits = 2, nsmall = 1) %>%
+  pander
+```
+
+### 합산(%)
+
+```{r, percentage in sum, echo = FALSE}
+tbl_q1_a %>% 
+  `[`(3, -(3:4), drop = FALSE) %>%
+  prop.table(margin = 1) %>%
+  `*`(100) %>%
+  cbind("계" = rowSums(.)) %>%
+  format(digits = 2, nsmall = 1) %>%
+  pander
+```
+
+```{r, save, echo = FALSE}
+#save.image("../R/bayes.RData")
+```

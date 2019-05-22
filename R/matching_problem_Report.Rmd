@@ -71,6 +71,8 @@ mean_score <- matching_score %>%
 
 ## 정답갯수의 분포
 
+### 랜덤화 효과 카이제곱 검증
+
 ```{r, matching, echo = FALSE}
 Observed <- matching_score %>%
   factor(levels = c(0, 1, 2, 4),
@@ -79,12 +81,12 @@ Observed <- matching_score %>%
   rbind("계" = colSums(.)) 
 Observed %>%
   kable
-Observed[, -5] %>%
+Observed[-3, -5] %>%
   chisq.test(simulate.p.value = TRUE) %>%
   pander
 ```
 
-## 카이제곱 적합도 테스트
+### 맷칭 모델 Expected vs Observed
 
 랜덤하게 골랐다면, 각각의 확률은 9/24, 8/24, 6/24, 1/24이다. 응답인원 `r N2`명을 각 확률에 곱해보면
 다음과 같은 결과가 나온다. 이 테이블에서 Observed 는 관찰값, Expected 는 확률로부터 계산되는 기대값을 나타내고, Diff는 관찰값과 기대값의 차이이다. 차이가 적다는 점에 유의하고 이를 비교하는 통계량인 카이제곱 값으로부터 계산된 p-값이 매우 크다는 점으로부터 확률모형에서 충분히 나올 수 있는 관찰값임을 알 수 있다.
@@ -109,6 +111,8 @@ OE_tbl %>%
   format(digits = 1, nsmall = 1) %>%
   kable(align = c("c", rep("r", 5)))
 ```
+
+### 맷칭 모델 카이제곱 적합도 테스트
 
 ```{r, echo = FALSE}
 matching_score %>%
