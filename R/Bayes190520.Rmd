@@ -1,5 +1,5 @@
 ---
-title: "토계학 입문 : 베이스 규칙을 이용한 정보의 갱신"
+title: "통계학 입문 : 베이스 규칙을 이용한 정보의 갱신"
 author: "coop711"
 date: "2019-05-20"
 output: html_document
@@ -47,15 +47,22 @@ bayes %>%
 bayes %>% summary %>% pander
 ```
 
-## Bayes 규칙을 이용한 정보의 갱신
+## Bayes' Rule
 
 Red나 Black 공히 Bayes 규칙에 따라 계산하면 41퍼센트가 나온다. 
 다만, Red의 경우 통계기저율을 잘 인식하지 않는 성향에 따라 Black 보다 목격자가 제대로 판단헀을 확률 80퍼센트를 더 많이 고르는 것으로 알려져 있지만 반대의 결과가 관찰되었다. 물론 통계적으로 유의한 수준은 아니다.
 
+<!--
+|Prior      | Likelihood        | Posterior             |
+|----------:|:-----------------:|:----------------------|
+|0.85(그린) | 0.2(블루목격/그린)|                       | 
+|           |                   | 0.17 + 0.12(블루목격) |
+|0.15(블루) | 0.8(블루목격/블루)|                       |
+-->
+
 ### Red
 
 `r knitr::include_graphics("../pics/Bayes190520_red.png", dpi = NA)`
-
 
 \begin{aligned} 
 Pr("블루 목격") &= Pr("그린")\times Pr("블루 목격"\mid "그린") + Pr("블루")\times Pr("블루 목격"\mid "블루") \\ 
@@ -66,7 +73,6 @@ Pr("블루"|"블루 목격") &= \frac{Pr("블루")\times Pr("블루 목격"\mid 
 &= \frac{0.12}{0.17 + 0.12} \\
 &= 0.41
 \end{aligned}
-
 
 ### Black
 
