@@ -114,11 +114,11 @@ OE_tbl %>%
 
 ### 맷칭 모델 카이제곱 적합도 테스트
 
-```{r, echo = FALSE}
+```{r, echo = TRUE}
 matching_score %>%
   factor(levels = c(0, 1, 2, 4)) %>%
   table %>%
-  chisq.test(p = c(9, 8, 6, 1)/24, simulate.p.value = TRUE) %>%
+  chisq.test(p = c(9, 8, 6, 1)/24, simulate.p.value = FALSE, B = 2000) %>%
   pander
 # pander(chisq.test(table(matching_score), p = c(9, 8, 6, 1)/24, simulate.p.value = TRUE, B = 2000))
 ```

@@ -98,6 +98,7 @@ lines(seq(-6, 6, by = 0.01),
       col = "red")
 legend("topright", 
        inset = 0.05, 
+#        legend = c("(A) with df = (B)", "standard normal"),
        legend = c("t with df = 3", "standard normal"),
        lty = 1, 
        col = c("blue", "red"))

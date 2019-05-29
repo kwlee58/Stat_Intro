@@ -44,10 +44,8 @@ long form 에서 각 수면제의 효과가 없다는 가설을 t-test 하려면
 #### One sided t-test
 
 ```{r}
-t.test(sleep$extra[sleep$group == 1], 
-       alternative = "greater")
-t.test(sleep$extra[sleep$group == 2], 
-       alternative = "greater")
+t.test(sleep$extra[sleep$group == 1], alternative = "greater")
+t.test(sleep$extra[sleep$group == 2], alternative = "greater")
 ```
 
 <P style = "page-break-before: always">
@@ -130,7 +128,7 @@ apply(sleep_wide,
 
 ```{r}
 t.test(sleep_wide$A, sleep_wide$B, 
-       paired = T)
+       paired = TRUE)
 ```
 
 <P style = "page-break-before: always">
