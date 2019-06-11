@@ -99,6 +99,15 @@ lottery %$%
   table %>%
   t %>%
   kable
+lottery %$%
+  Number %>%
+  cut(breaks = seq(0, 1000, by = 125), 
+      include.lowest = TRUE, 
+      right = FALSE, 
+      dig.lab = 4) %>%
+  table %>%
+  t %>%
+  kable
 # h10 <-  hist(lottery$Number)
 # table(cut(lottery$Number, 
 #           breaks = seq(0, 1000, by = 100), 

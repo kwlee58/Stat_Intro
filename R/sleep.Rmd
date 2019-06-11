@@ -39,7 +39,8 @@ sleep_wide[, 1]
 
 ### Long Form Data Frame
 
-long form 에서 각 수면제의 효과가 없다는 가설을 t-test 하려면 
+long form 에서 각 수면제의 효과를 알아보기 위하여 t-test 를 수행하면,
+대립가설이 수면 시간이 평소보다 길어진다는 것이므로
 
 #### One sided t-test
 

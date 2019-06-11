@@ -71,7 +71,7 @@ boxplot(ZeaMays$cross, ZeaMays$self,
 
 ```{r}
 t.test(x = ZeaMays$cross, y = ZeaMays$self, 
-       paired = T)
+       paired = TRUE)
 ```
 
 또는 둘 사이의 차이인 diff 대하여 one-sample t-test 를 수행하여도 동일한 결과. 이 때는 모든 매개변수는 디폴트 값으로 충족됨에 유의.

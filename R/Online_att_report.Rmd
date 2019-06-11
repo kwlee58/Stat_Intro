@@ -1,0 +1,80 @@
+---
+title: "Online Attendance : Stat Intro"
+# author: "coop711"
+# date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("pander", repos = "https://cran.rstudio.com")
+# install.packages("xlsx", repos = "https://cran.rstudio.com")
+# install.packages("readr", repos = "https://cran/rstudio.com")
+library(xlsx)
+library(pander)
+library(knitr)
+library(dplyr)
+library(magrittr)
+panderOptions('table.split.table', Inf)
+options(width = 132)
+```
+
+<!--
+# Data
+-->
+
+## 데이터 정리
+
+```{r, data, echo = TRUE, results = "markup"}
+options(digits = 2)
+load("./red_and_black_190317_data.RData")
+att <- read.xlsx("../data/Online_att.xlsx", 
+                        sheetIndex = 1, 
+                        startRow = 1, 
+                        endRow = 3526, 
+                        colIndex = 2:15,
+#                         colClasses = c("character","POSIXct", rep("character", 3), "POSIXct"), 
+                        encoding = "UTF-8",
+                        stringsAsFactors = FALSE)
+names(att) <- c("dept", "name", "id", "wk_no", "wk_name", "period", "seq", "seq_name", "date_reg", "min", "att", "start", "finish", "sec")
+str(att)
+att_15 <- subset(att, wk_no == 15)
+str(att_15)
+head(att_15, n = 20)
+#> left_join 에 key로 사용하기 위하여 id 속성을 맞춰 줌, 
+class(att_15$id) <- "character"
+att_15 <- left_join(class_roll[, c("id", "name")], 
+                       att_15[, c("id", "name", "seq", "att")], 
+                       by = c("id", "name"))
+```
+
+## 점수 계산
+
+```{r}
+#> 중복 수강 기록 제거
+att_15 %<>% 
+  unique
+#> 동그라미는 2점, 세모는 1점, 나머지는 0점, NA도 0점
+att_15$att_s <- ifelse(att_15$att == "O", 2, 
+                       ifelse(att_15$att == "△", 1, 0))
+att_15$att_s[is.na(att_15$att)] <- 0
+
+#> id를 기준으로 점수 합산
+# score <- tapply(att_15$att_s, att_15$id, FUN = function(x) sum(x) / 8)
+score <- tapply(att_15$att_s, att_15$id, FUN = . %>% {`/`(sum(.), 8)})
+
+#> id에 맞춰 출석부에 온라인 점수 추가
+class_roll$score <- score[match(class_roll$id, names(score))]
+
+#> 이름 가나다 순, 동명은 id 순
+class_roll[order(class_roll$name, class_roll$id), c("id", "name", "score")] %>%
+  pander(row.names = FALSE)
+```
+
+## Save
+
+```{r}
+Online_att_score <- class_roll[order(class_roll$name, class_roll$id), c("id", "name", "score")]
+saveRDS(Online_att_score, file = "./Online_att_score1901.RDS")
+```
+

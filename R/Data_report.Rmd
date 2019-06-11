@@ -1,0 +1,126 @@
+---
+title: "Comments Score"
+# author: "coop711"
+# date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("pander", repos = "https://cran.rstudio.com")
+# install.packages("xlsx", repos = "https://cran.rstudio.com")
+# install.packages("readr", repos = "https://cran/rstudio.com")
+library(xlsx)
+library(pander)
+library(knitr)
+library(dplyr)
+library(magrittr)
+panderOptions('table.split.table', Inf)
+options(width = 132)
+```
+
+<!--
+# Data
+-->
+
+# 덧글 제출시간 데이터
+
+```{r, data, echo = TRUE, results = "markup"}
+options(digits = 2)
+load("./red_and_black_190317_data.RData")
+comment <- read.xlsx("../data/contentsList.xlsx", 
+                        sheetIndex = 1, 
+                        startRow = 1, 
+                        endRow = 296, 
+                        colIndex = c(2, 5:9),
+#                         colClasses = c("character","POSIXct", rep("character", 3), "POSIXct"), 
+                        encoding = "UTF-8",
+                        stringsAsFactors = FALSE)
+names(comment) <- c("title", "time1", "contents", "name", "id", "time2")
+str(comment)
+class(comment$id) <- "character"
+comment$title_f <- comment$title %>%
+  factor(labels = 1:5)
+```
+
+# 제출 시간별 점수 차등화
+
+## 1회차 사례 
+
+```{r}
+## 미제출자 NA 처리하기 위하여 출석부와 `left_join`. title이 너무 길어서 회차만 뗴어 factor로 재구조화
+comment01 <- left_join(class_roll[, c("id", "name")], 
+                       comment[comment$title_f == 1, -c(1, 3)], 
+                       by = c("id", "name"))
+## 게시후 제출까지의 기간을 주 단위로 연산
+comment01$weeks <- as.numeric(difftime(comment01$time2, comment01$time1, units = 'weeks')) 
+## 6주가 지나거나 미제출은 0점 처리, 1주일 지날 때 마다 0.2점씩 감점. 계산식에 유의.
+comment01$score <- ifelse(comment01$weeks >= 6
+                          | is.na(comment01$weeks), 0, floor(6 - comment01$weeks) / 5)
+## 변수 순서 정리
+comment01 <- comment01[c("id", "name", "title_f", "time1", "time2", "weeks", "score")]
+## 회차 결측값 채우기
+comment01$title_f[is.na(comment01$title_f)] <- 1
+## 중복 제출 저료는 2차에 제출한 자료를 삭제
+comment01 <- comment01[!duplicated(comment01$id), ]
+comment01
+
+## 회차별로 점수를 포함한 데이터 생성하는 함수 작성
+
+df <- function(j){  
+  comments <- left_join(class_roll[, c("id", "name")], 
+                        comment[comment$title_f == j, -c(1, 3)], 
+                        by = c("id", "name"))
+  comments$weeks <- as.numeric(difftime(comments$time2, comments$time1, units = 'weeks'))
+  comments$score <- ifelse(comments$weeks >= 6
+                           | is.na(comments$weeks), 0, floor(6 - comments$weeks) / 5)
+  comments <- comments[c("id", "name", "title_f", "time1", "time2", "weeks", "score")]
+  comments$title_f[is.na(comments$title_f)] <- j
+  comments <- comments[!duplicated(comments$id), ]
+  return(comments)
+}
+```
+
+# Long Form data frame 으로 저장
+
+```{r}
+## 초기화
+comments <- NULL 
+
+## `rbind`를 이용하여 회차별로 생성한 데이터를 long form data frame 으로 구조화
+for (j in 1:5) {
+  comments <- rbind(comments, df(j))
+}
+
+kable(comments, row.names = FALSE)
+```
+
+# 점수 합산
+
+```{r}
+## 학번별로 회차별 점수 합산
+total <- comments %$%
+  tapply(score, id, sum)
+```
+
+# Wide Form data frame 변환
+
+```{r}
+## Wide form으로 전환하기 위하여 초기 데이터 프레임 설정
+comments_w <- comments[1:76, c("id", "name")]
+
+## Wide form으로 재구조화하고 변수 이름을 회차별로 구분하도록 설정
+for (j in 1:5) {
+  comments_w <- cbind(comments_w, comments[comments$title_f == j, c("time1", "time2", "weeks", "score")])
+  names(comments_w)[(4 * j + 1):(4 * j + 2)] <- 
+    paste(substr(names(comments_w)[(4 * j + 1):(4 * j + 2)], 1, 1), j, sep = "_")
+  names(comments_w)[(4 * j - 1):(4 * j)] <- 
+    paste(names(comments_w)[(4 * j - 1):(4 * j)], j, sep = "_")
+}
+
+comments_w$total <- total * 2
+
+kable(comments_w[c("id", "name", paste("s", 1:5, sep = "_"), "total")])
+```
+
+
