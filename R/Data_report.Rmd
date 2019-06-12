@@ -27,7 +27,7 @@ options(width = 132)
 
 ```{r, data, echo = TRUE, results = "markup"}
 options(digits = 2)
-load("./red_and_black_190317_data.RData")
+load("./red_and_black_190602_data.RData")
 comment <- read.xlsx("../data/contentsList.xlsx", 
                         sheetIndex = 1, 
                         startRow = 1, 
@@ -107,7 +107,7 @@ total <- comments %$%
 
 ```{r}
 ## Wide form으로 전환하기 위하여 초기 데이터 프레임 설정
-comments_w <- comments[1:76, c("id", "name")]
+comments_w <- comments[1:75, c("id", "name")]
 
 ## Wide form으로 재구조화하고 변수 이름을 회차별로 구분하도록 설정
 for (j in 1:5) {
@@ -118,9 +118,14 @@ for (j in 1:5) {
     paste(names(comments_w)[(4 * j - 1):(4 * j)], j, sep = "_")
 }
 
-comments_w$total <- total * 2
+comments_w$total <- total[match(comments_w$id, names(total))]
 
-kable(comments_w[c("id", "name", paste("s", 1:5, sep = "_"), "total")])
+comments_w$total <- comments_w$total * 3
+
+kable(comments_w[c("id", "name", paste("s", 1:5, sep = "_"), "total")],
+      row.names = FALSE)
+
+pander(comments_w[c("id", "name", "total")], row.names = FALSE)
 ```
 
 

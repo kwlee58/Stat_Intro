@@ -27,7 +27,7 @@ options(width = 132)
 
 ```{r, data, echo = TRUE, results = "markup"}
 options(digits = 2)
-load("./red_and_black_190317_data.RData")
+load("./red_and_black_190602_data.RData")
 att <- read.xlsx("../data/Online_att.xlsx", 
                         sheetIndex = 1, 
                         startRow = 1, 
@@ -61,10 +61,12 @@ att_15$att_s[is.na(att_15$att)] <- 0
 
 #> id를 기준으로 점수 합산
 # score <- tapply(att_15$att_s, att_15$id, FUN = function(x) sum(x) / 8)
-score <- tapply(att_15$att_s, att_15$id, FUN = . %>% {`/`(sum(.), 8)})
+score <- tapply(att_15$att_s, att_15$id, FUN = . %>% {sum(.)})
 
 #> id에 맞춰 출석부에 온라인 점수 추가
 class_roll$score <- score[match(class_roll$id, names(score))]
+
+class_roll$score <- class_roll$score * 5 / 16
 
 #> 이름 가나다 순, 동명은 id 순
 class_roll[order(class_roll$name, class_roll$id), c("id", "name", "score")] %>%
