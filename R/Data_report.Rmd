@@ -128,4 +128,11 @@ kable(comments_w[c("id", "name", paste("s", 1:5, sep = "_"), "total")],
 pander(comments_w[c("id", "name", "total")], row.names = FALSE)
 ```
 
+# Save
 
+```{r}
+write.csv(comments, file = "../data/comments.csv", fileEncoding = "CP949")
+write.csv(comments_w[order(comments_w$name, comments_w$id), 
+                 c("id", "name", paste("s", 1:5, sep = "_"), "total")],
+          file = "../data/comments_w.csv", fileEncoding = "CP949")
+```

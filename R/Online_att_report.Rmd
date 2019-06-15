@@ -78,5 +78,7 @@ class_roll[order(class_roll$name, class_roll$id), c("id", "name", "score")] %>%
 ```{r}
 Online_att_score <- class_roll[order(class_roll$name, class_roll$id), c("id", "name", "score")]
 saveRDS(Online_att_score, file = "./Online_att_score1901.RDS")
+write.csv(att_15, file = "../data/att_15.csv", fileEncoding = "CP949")
+write.csv(Online_att_score, file = "../data/Online_att_score.csv", fileEncoding = "CP949")
 ```
 
